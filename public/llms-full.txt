@@ -1,0 +1,68 @@
+# GPRG - GitHub Profile README Generator (Full Reference)
+
+> GPRG (GitHub Profile README Generator/Maker) is a free, open-source, no-code tool built by Bhalli B for creating professional, data-driven GitHub Profile READMEs.
+
+## What is GPRG?
+
+GPRG is a free GitHub Profile README Generator that helps software developers, open-source contributors, and tech professionals create GitHub profile READMEs in minutes - without writing markdown by hand.
+
+## Key Features
+
+1. **AI-Powered Bio Generation** - Generate a profile bio in a selected tone (professional, witty, casual, minimal), powered by generative AI.
+2. **200+ Tech Stack Icons** - Search and select from a curated library of framework, language, database, cloud, AI/data, tool, design, mobile, and testing icons.
+3. **Dynamic GitHub Stats Integration** - Live GitHub stats cards, contribution streaks, top languages, activity graph, and trophy widgets.
+4. **Seven README Templates** - Minimalist, Data-Driven, Developer, Creative, Compact, Terminal, and Corporate - each with a distinct structure and visual identity.
+5. **Real-Time, Editable Markdown Preview** - See the README as it's built, and edit the generated markdown directly before export with live preview.
+6. **Social Media Integration** - LinkedIn, Twitter, Instagram, Threads, YouTube, Twitch, Discord, and email.
+7. **One-Click Export** - Copy to clipboard or download as a .md file.
+8. **Session Persistence** - Progress is saved in the browser's local storage.
+9. **No Signup Required** - No account, no email, no credit card.
+10. **No-Code Interface** - Step-by-step wizard: Profile → Skills → Analytics → Templates → Export.
+
+## How to Create a GitHub Profile README with GPRG
+
+1. **Fill Your Info** - Enter your name, title, bio, GitHub username, and social links.
+2. **Select Your Tech Stack** - Pick from 200+ icons across every major category.
+3. **Configure GitHub Analytics** - Toggle stats, streak, languages, activity graph, trophies, and visitor badge widgets.
+4. **Choose a Template** - Select from seven templates, each rendering all your selected data in a distinct style.
+5. **Review & Export** - Edit the generated markdown directly if needed, then copy or download it.
+
+## Technical Stack
+
+- **Frontend**: Next.js (App Router), React, Tailwind CSS v4
+- **State Management**: React hooks with local storage persistence
+- **Hosting**: Vercel, at grpg.bhalli.dev
+- **License**: MIT (open source)
+
+## Target Audience
+
+- Software developers (frontend, backend, fullstack, mobile, DevOps)
+- Open-source contributors and maintainers
+- Students and bootcamp graduates building a portfolio
+- Job seekers optimizing their GitHub presence for recruiters
+
+## Frequently Asked Questions
+
+**What is a GitHub Profile README?**
+A special repository (named identically to your GitHub username) whose README.md is displayed at the top of your GitHub profile page.
+
+**Is GPRG free?**
+Yes. All features are free, with no signup or credit card required.
+
+**Do I need coding skills?**
+No. GPRG is a no-code visual editor - you fill in information and make selections, and markdown is generated automatically.
+
+**Is my data safe?**
+Yes. All processing happens client-side in the browser. Nothing is transmitted to or stored on GRPG's servers.
+
+**Is GPRG open source?**
+Yes, under the MIT license. The source is available on GitHub, and issues and contributions are welcome.
+
+## Links
+
+- [Homepage](https://gprg.bhalli.dev/)
+- [Editor](https://gprg.bhalli.dev/generator)
+- [GitHub Repository](https://github.com/BhalliBhai/gprg)
+- [Creator: Bhalli B](https://bhalli.dev)
+- [Privacy Policy](https://gprg.bhalli.dev/privacy-policy)
+- [Terms of Service](https://gprg.bhalli.dev/terms-of-service)

@@ -1,0 +1,40 @@
+# GPRG - GitHub Profile README Generator
+
+> GPRG (GitHub Profile README Generator/Maker) is a free, open-source, no-code tool built by Bhalli B for creating professional, data-driven GitHub Profile READMEs. It features AI-powered bio generation, 200+ tech stack icons, live GitHub stats integration, and multiple README templates.
+It includes an AI bio generator, 200+ tech icons, dynamic GitHub stats cards, and premium templates.
+
+## Short description
+GPRG helps developers create clear, recruiter-friendly GitHub profile READMEs with templates, AI bios, and stats cards.
+
+GPRG helps software developers, open-source contributors, and tech professionals build GitHub profile READMEs in minutes without writing markdown by hand. The tool is a step-by-step no-code editor: Profile → Skills → Analytics → Templates → Export.
+
+Key features:
+- AI-powered bio generation with selectable tone (professional, witty, casual, minimal)
+- 200+ searchable tech stack icons across frontend, backend, languages, databases, cloud/DevOps, AI/data, tools, design, mobile, and testing
+- Live GitHub stats, streak stats, top-languages, contribution graph, and trophy widgets
+- Seven README templates (Minimalist, Data-Driven, Developer, Creative, Compact, Terminal, Corporate)
+- Real-time, editable markdown preview before export
+- Copy-to-clipboard or direct .md file download
+- No signup, no account. All processing happens client-side in the browser; nothing is stored on GPRG's servers
+
+GPRG is open source under the MIT license. Issues, feature requests, and contributions are welcome on GitHub.
+
+## Pages
+
+- [Homepage](https://gprg.bhalli.dev/): Product overview and features
+- [Editor](https://gprg.bhalli.dev/generator): The interactive README builder
+- https://gprg.bhalli.dev/generator: the main app - build and export a README
+- https://gprg.bhalli.dev/guide: step-by-step tutorial for creating a GitHub profile README
+- https://gprg.bhalli.dev/templates: gallery of available README design templates
+- https://gprg.bhalli.dev/faq: frequently asked questions about GPRG and GitHub profile READMEs
+- https://gprg.bhalli.dev/blog: articles about GitHub profiles, README design, and developer branding
+
+## Source Code
+
+- [GitHub Repository](https://github.com/BhalliBhai/gprg): MIT-licensed source, open issues, contribute
+- [Creator: Bhalli B](https://bhalli.dev): Portfolio of GPRG's developer and maintainer
+
+## Optional
+
+- [Privacy Policy](https://gprg.bhalli.dev/privacy-policy): Client-side data handling - nothing stored on GPRG's servers
+- [Terms of Service](https://gprg.bhalli.dev/terms-of-service): Usage terms
