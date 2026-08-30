@@ -21,19 +21,19 @@ export function Footer() {
       <div className="container-app">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 sm:col-span-2 flex flex-col gap-6">
-            <div className="flex items-center gap-3 group">
+            <div className="flex flex-col items-start gap-3">
               <div className="relative">
                 <div className="absolute -inset-1 bg-linear-to-r from-primary to-accent-blue rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
                 <div className="relative bg-background-light dark:bg-background-dark p-2 rounded-lg hairline-border-light dark:hairline-border flex items-center justify-center">
-                  <Image className="rounded-full" src="/icon0.svg" alt={`${siteConfig.name} Logo`} width={40} height={40} />
+                  <Image className="rounded-full" src="/logo.png" alt={`${siteConfig.name} Logo`} width={200} height={200} />
                 </div>
               </div>
-              <div className="flex flex-col space-y-0">
-                <h2 className="text-xl sm:text-2xl font-black tracking-tighter text-text-light dark:text-text-dark">
-                  GITHUB
+              <div className="flex flex-col items-start group">
+                <h2 className="text-xl sm:text-2xl font-black tracking-wider text-text-light dark:text-text-dark">
+                  GITHUB PROFILE
                 </h2>
-                <span className="text-[9px] sm:text-[10px] font-bold text-primary uppercase tracking-[0.2em] leading-none">
-                  Readme Maker
+                <span className="text-md font-bold text-primary uppercase tracking-[0.2em] leading-none">
+                  README GENERATOR
                 </span>
               </div>
             </div>

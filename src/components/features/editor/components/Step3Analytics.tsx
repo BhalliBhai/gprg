@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { EditorState } from '../types';
+import { SettingsIcon, BarChartIcon, ActivityIcon, CodeIcon, TrophyIcon, VisibilityIcon, WarningIcon, ArrowBackIcon, ArrowForwardIcon } from '@/components/Icons';
 
 interface StepProps {
   state: EditorState;
@@ -39,7 +40,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
       <aside className="lg:col-span-4 space-y-6">
         <div className="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-primary/10 rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
-            <span className="material-symbols-outlined text-primary">settings_suggest</span>
+            <span className="material-symbols-outlined text-primary"><SettingsIcon /></span>
             Display Modules
           </h3>
           <div className="space-y-4">
@@ -50,7 +51,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${state.analytics.showStats ? 'bg-primary/5 border-primary/40' : 'bg-slate-50 dark:bg-background-dark/60 border-slate-200 dark:border-primary/10'}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined ${state.analytics.showStats ? 'text-primary' : 'text-slate-400'}`}>monitoring</span>
+                <span className={`material-symbols-outlined ${state.analytics.showStats ? 'text-primary' : 'text-slate-400'}`}><BarChartIcon /></span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">General Stats Card</span>
               </div>
               <div className={`relative inline-flex items-center w-11 h-6 rounded-full transition-colors ${state.analytics.showStats ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}>
@@ -64,7 +65,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${state.analytics.showStreak ? 'bg-primary/5 border-primary/40' : 'bg-slate-50 dark:bg-background-dark/60 border-slate-200 dark:border-primary/10'}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined ${state.analytics.showStreak ? 'text-primary' : 'text-slate-400'}`}>bolt</span>
+                <span className={`material-symbols-outlined ${state.analytics.showStreak ? 'text-primary' : 'text-slate-400'}`}><ActivityIcon /></span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">Streak Analytics</span>
               </div>
               <div className={`relative inline-flex items-center w-11 h-6 rounded-full transition-colors ${state.analytics.showStreak ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}>
@@ -78,7 +79,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${state.analytics.showLanguages ? 'bg-primary/5 border-primary/40' : 'bg-slate-50 dark:bg-background-dark/60 border-slate-200 dark:border-primary/10'}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined ${state.analytics.showLanguages ? 'text-primary' : 'text-slate-400'}`}>code_blocks</span>
+                <span className={`material-symbols-outlined ${state.analytics.showLanguages ? 'text-primary' : 'text-slate-400'}`}><CodeIcon /></span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">Top Languages</span>
               </div>
               <div className={`relative inline-flex items-center w-11 h-6 rounded-full transition-colors ${state.analytics.showLanguages ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}>
@@ -92,7 +93,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${state.analytics.showGraph ? 'bg-primary/5 border-primary/40' : 'bg-slate-50 dark:bg-background-dark/60 border-slate-200 dark:border-primary/10'}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined ${state.analytics.showGraph ? 'text-primary' : 'text-slate-400'}`}>timeline</span>
+                <span className={`material-symbols-outlined ${state.analytics.showGraph ? 'text-primary' : 'text-slate-400'}`}><ActivityIcon/></span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">Contribution Graph</span>
               </div>
               <div className={`relative inline-flex items-center w-11 h-6 rounded-full transition-colors ${state.analytics.showGraph ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}>
@@ -106,7 +107,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${state.analytics.showTrophies ? 'bg-primary/5 border-primary/40' : 'bg-slate-50 dark:bg-background-dark/60 border-slate-200 dark:border-primary/10'}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined ${state.analytics.showTrophies ? 'text-primary' : 'text-slate-400'}`}>emoji_events</span>
+                <span className={`material-symbols-outlined ${state.analytics.showTrophies ? 'text-primary' : 'text-slate-400'}`}><TrophyIcon/></span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">GitHub Trophies</span>
               </div>
               <div className={`relative inline-flex items-center w-11 h-6 rounded-full transition-colors ${state.analytics.showTrophies ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}>
@@ -120,7 +121,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${state.analytics.showVisitorBadge ? 'bg-primary/5 border-primary/40' : 'bg-slate-50 dark:bg-background-dark/60 border-slate-200 dark:border-primary/10'}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined ${state.analytics.showVisitorBadge ? 'text-primary' : 'text-slate-400'}`}>visibility</span>
+                <span className={`material-symbols-outlined ${state.analytics.showVisitorBadge ? 'text-primary' : 'text-slate-400'}`}><VisibilityIcon/></span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">Visitor Badge</span>
               </div>
               <div className={`relative inline-flex items-center w-11 h-6 rounded-full transition-colors ${state.analytics.showVisitorBadge ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}>
@@ -160,7 +161,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
         {/* Username Warning if missing */}
         {!state.profile.github && (
           <div className="bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700/50 text-amber-800 dark:text-amber-200 rounded-xl p-4 flex items-start gap-3">
-            <span className="material-symbols-outlined shrink-0 mt-0.5">warning</span>
+            <span className="material-symbols-outlined shrink-0 mt-0.5"><WarningIcon/></span>
             <div className="text-sm">
               <p className="font-bold mb-1">GitHub Username Missing</p>
               <p>You didn&apos;t provide a GitHub username in Step 1. The previews below are showing sample data.</p>
@@ -266,12 +267,12 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
 
         <div className="border-t border-primary/10 bg-white dark:bg-background-dark/20 p-4 mt-8 flex justify-between items-center rounded-xl shadow-sm border dark:border-transparent">
           <button onClick={prevStep} className="flex items-center gap-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all text-slate-600 dark:text-slate-300 px-4 py-2 rounded-lg">
-            <span className="material-symbols-outlined font-bold">arrow_back</span>
+            <ArrowBackIcon/>
             Back
           </button>
           <button onClick={nextStep} className="flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-black text-background-dark shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
             Continue to Step 4
-            <span className="material-symbols-outlined font-bold">arrow_forward</span>
+            <ArrowForwardIcon/>
           </button>
         </div>
       </section>

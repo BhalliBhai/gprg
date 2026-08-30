@@ -1,3 +1,4 @@
+import { WarningIcon } from "@/components/Icons";
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -30,7 +31,7 @@ export function ConfirmDialog({
       <div className="w-full max-w-sm rounded-xl border border-slate-200 dark:border-primary/20 bg-white dark:bg-background-dark p-6 shadow-2xl">
         <div className="flex items-start gap-3 mb-4">
           <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
-            <span className="material-symbols-outlined">warning</span>
+            <WarningIcon/>
           </div>
           <div>
             <h3 id="confirm-dialog-title" className="font-bold text-slate-900 dark:text-white">

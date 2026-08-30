@@ -4,6 +4,7 @@ import { EditorState } from '../types';
 import { generateMarkdown } from '../../../../utils/markdown';
 import MDEditor from '@uiw/react-md-editor';
 import { ConfirmDialog } from './ConfirmDialog';
+import { CheckCircleIcon, DownloadIcon, ArrowBackIcon, CopyIcon, RefreshIcon, EditDocumentIcon } from '@/components/Icons';
 
 interface StepProps {
   state: EditorState;
@@ -65,7 +66,7 @@ export function Step5Export({ state, prevStep }: StepProps) {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/10 rounded-xl p-6 shadow-sm">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-            <span className="material-symbols-outlined text-3xl">check_circle</span>
+            <span className="text-3xl"><CheckCircleIcon size={30} /></span>
           </div>
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white">Review &amp; Export</h2>
@@ -73,7 +74,7 @@ export function Step5Export({ state, prevStep }: StepProps) {
               Edit the markdown directly below if you want to tweak anything - the preview updates as you type.
               {isDirty && (
                 <span className="ml-2 inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-semibold">
-                  <span className="material-symbols-outlined text-xs">edit</span> Unsaved manual edits
+                  <EditDocumentIcon size={20}/> Unsaved manual edits
                 </span>
               )}
             </p>
@@ -86,21 +87,21 @@ export function Step5Export({ state, prevStep }: StepProps) {
             disabled={!isDirty}
             className="flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-primary/20 px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <span className="material-symbols-outlined text-sm">restart_alt</span>
+            <RefreshIcon/>
             Discard Changes
           </button>
           <button
             onClick={handleCopy}
             className="flex items-center gap-1.5 rounded-lg bg-primary text-background-dark px-4 py-2 text-xs font-black shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
           >
-            <span className="material-symbols-outlined text-sm">{copied ? 'done_all' : 'content_copy'}</span>
+            <span className="material-symbols-outlined text-sm">{copied ? <CheckCircleIcon/> : <CopyIcon/>}</span>
             {copied ? 'Copied!' : 'Copy Markdown'}
           </button>
           <button
             onClick={handleDownload}
             className="flex items-center gap-1.5 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 px-4 py-2 text-xs font-bold hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
           >
-            <span className="material-symbols-outlined text-sm">download</span>
+            <DownloadIcon/>
             Download .MD
           </button>
         </div>
@@ -136,7 +137,7 @@ export function Step5Export({ state, prevStep }: StepProps) {
         onClick={prevStep}
         className="flex items-center gap-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all text-slate-600 dark:text-slate-300 px-4 py-2 rounded-lg"
       >
-        <span className="material-symbols-outlined font-bold">arrow_back</span>
+        <span className="material-symbols-outlined font-bold"><ArrowBackIcon/></span>
         Back to Templates
       </button>
       

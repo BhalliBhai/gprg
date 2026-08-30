@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { EditorState } from '../types';
 import { AVAILABLE_SKILLS, CATEGORIES, type Skill } from '../data/skills';
+import { SearchIcon, SearchOffIcon, CheckCircleIcon, ArrowBackIcon, ArrowForwardIcon } from '@/components/Icons';
 
 interface StepProps {
   state: EditorState;
@@ -66,7 +67,9 @@ export function Step2Skills({ state, setState, nextStep, prevStep }: StepProps) 
       <div className="sticky top-18 sm:top-21 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md py-4 mb-1 -mx-2 px-2 rounded-xl border border-slate-200/70 dark:border-primary/20">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
-            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+            <SearchIcon />
+            </span> 
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -118,7 +121,7 @@ export function Step2Skills({ state, setState, nextStep, prevStep }: StepProps) 
               <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.55),transparent_55%)]" />
               {isSelected && (
                 <div className="absolute top-2 right-2">
-                  <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
+                  <span className="text-primary text-xl"><CheckCircleIcon /></span>
                 </div>
               )}
               <div className="w-14 h-14 mb-3 flex items-center justify-center rounded-xl bg-linear-to-b from-white to-slate-100 dark:from-background-dark dark:to-[#0d1d13] border border-slate-200 dark:border-primary/15 shadow-inner shadow-black/5">
@@ -149,7 +152,7 @@ export function Step2Skills({ state, setState, nextStep, prevStep }: StepProps) 
 
         {filteredSkills.length === 0 && (
           <div className="col-span-full py-12 text-center text-slate-500 dark:text-slate-400 flex flex-col items-center gap-2">
-            <span className="material-symbols-outlined text-4xl opacity-50">search_off</span>
+            <span className="text-4xl opacity-50"><SearchOffIcon /></span>
             <p>No technologies found matching your search.</p>
           </div>
         )}
@@ -160,7 +163,7 @@ export function Step2Skills({ state, setState, nextStep, prevStep }: StepProps) 
           onClick={prevStep}
           className="flex items-center gap-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all text-slate-600 dark:text-slate-300 px-4 py-2 rounded-lg"
         >
-          <span className="material-symbols-outlined font-bold">arrow_back</span>
+          <span className="font-bold"><ArrowBackIcon/></span>
           Back
         </button>
         <button
@@ -168,7 +171,7 @@ export function Step2Skills({ state, setState, nextStep, prevStep }: StepProps) 
           className="flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-black text-background-dark shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
         >
           Continue to Step 3
-          <span className="material-symbols-outlined font-bold">arrow_forward</span>
+          <span className="font-bold"><ArrowForwardIcon/></span>
         </button>
       </div>
 

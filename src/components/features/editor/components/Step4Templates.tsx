@@ -3,6 +3,8 @@ import { EditorState } from '../types';
 import { generateMarkdown } from '../../../../utils/markdown';
 import MDEditor from '@uiw/react-md-editor';
 import { TEMPLATES } from '../templates/registry';
+import { ArrowBackIcon, ArrowForwardIcon } from '@/components/Icons';
+
 
 interface StepProps {
   state: EditorState;
@@ -83,12 +85,12 @@ export function Step4Templates({ state, setState, nextStep, prevStep }: StepProp
       {/* Navigation */}
       <div className="border-t border-primary/10 bg-white dark:bg-background-dark/20 p-4 flex justify-between items-center rounded-xl shadow-sm border dark:border-transparent transition-all">
         <button onClick={prevStep} className="flex items-center gap-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all text-slate-600 dark:text-slate-300 px-4 py-2 rounded-lg">
-          <span className="material-symbols-outlined font-bold">arrow_back</span>
+          <ArrowBackIcon/>
           Back
         </button>
         <button onClick={nextStep} className="flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-black text-background-dark shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all outline-none">
           Generate Final Code
-          <span className="material-symbols-outlined font-bold">rocket_launch</span>
+          <ArrowForwardIcon/>
         </button>
       </div>
 
