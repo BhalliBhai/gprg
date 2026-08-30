@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: `${siteConfig.url}/icon.svg`,
+        url: `${siteConfig.url}/gprg-og-image.png`,
         width: 512,
         height: 512,
         alt: `${siteConfig.name} - GitHub Profile README Generator Logo`,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: `GitHub README Generator | ${siteConfig.fullName}`,
     description:
       "Interactive no-code generator - 200+ icons, stats, templates. Build & export your GitHub README in minutes.",
-    images: [`${siteConfig.url}/icon.svg`],
+    images: [`${siteConfig.url}/gprg-og-image.png`],
   },
 };
 
