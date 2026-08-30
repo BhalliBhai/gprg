@@ -1,3 +1,6 @@
+import { siteConfig } from "@/config/site";
+import { ChevronDownIcon } from "@/components/Icons";
+
 type Faq = {
   question: string;
   answer: string;
@@ -5,14 +8,14 @@ type Faq = {
 
 const editorFaqs: Faq[] = [
   {
-    question: 'Do I need to create an account to use GPRM?',
+    question: `Do I need to create an account to use ${siteConfig.name}?`,
     answer:
-      "No. GPRM doesn't require sign-up or a GitHub OAuth connection. Just enter your public GitHub username and fill in your details directly in the editor.",
+      `No. ${siteConfig.name} doesn't require sign-up or a GitHub OAuth connection. Just enter your public GitHub username and fill in your details directly in the editor.`,
   },
   {
     question: 'Is my data saved or stored on your servers?',
     answer:
-      'No. Everything you enter is processed directly in your browser. GPRM uses browser local storage to save your progress on your device so you can pick up where you left off - nothing is transmitted to or stored on our servers.',
+      `No. Everything you enter is processed directly in your browser. ${siteConfig.name} uses browser local storage to save your progress on your device so you can pick up where you left off - nothing is transmitted to or stored on our servers.`,
   },
   {
     question: 'Can I edit my README after generating it?',
@@ -22,7 +25,7 @@ const editorFaqs: Faq[] = [
   {
     question: 'Do I need to know Markdown to use the Readme generator?',
     answer:
-      "No. GPRM is a no-code tool - you fill in fields and make selections visually, and the editor generates the Markdown for you automatically.",
+      `No. ${siteConfig.name} is a no-code tool - you fill in fields and make selections visually, and the editor generates the Markdown for you automatically.`,
   },
   {
     question: 'How do I add the generated README to my GitHub profile?',
@@ -33,23 +36,24 @@ const editorFaqs: Faq[] = [
 
 export function EditorFaq() {
   return (
-    <section className="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-      <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">
+    <section className="container-app max-w-3xl py-16 sm:py-20">
+      <h2 className="heading-lg mb-8 text-center">
         Readme Generator FAQs
       </h2>
       <div className="space-y-3">
         {editorFaqs.map((faq) => (
           <details
             key={faq.question}
-            className="group rounded-lg border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 px-5 py-4"
+            className="group card px-5 py-4 [&_summary::-webkit-details-marker]:hidden"
           >
-            <summary className="flex items-center justify-between cursor-pointer font-semibold text-slate-900 dark:text-white list-none">
-              {faq.question}
-              <span className="material-symbols-outlined text-primary transition-transform group-open:rotate-180">
-                expand_more
-              </span>
+            <summary className="flex items-center justify-between cursor-pointer font-semibold text-text-light dark:text-text-dark list-none">
+              <span className="pr-4">{faq.question}</span>
+              <ChevronDownIcon
+                size={18}
+                className="text-primary transition-transform duration-200 group-open:rotate-180 select-none shrink-0"
+              />
             </summary>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="mt-3 text-body-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
               {faq.answer}
             </p>
           </details>

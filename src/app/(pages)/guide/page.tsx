@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Breadcrumbs from "../../../components/Breadcrumbs";
-import FaqSection from "../../..//components/FaqSection";
-import { guideFaqs } from "../../../lib/faq-data";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import FaqSection from "@/components/FaqSection";
+import { guideFaqs } from "@/lib/faq-data";
+import { siteConfig } from "@/config/site";
+import { ArrowForwardIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "How to Create a GitHub Profile README (Step-by-Step Guide) | GPRM",
+  title: `How to Create a GitHub Profile README (Step-by-Step Guide) | ${siteConfig.name}`,
   description:
-    "A complete walkthrough for creating a GitHub profile README: setting up the special repo, writing your bio, adding stats and badges, and avoiding common mistakes.",
-  alternates: { canonical: "https://gprm.bhalli.dev/guide" },
+    `A complete walkthrough for creating a GitHub profile README: setting up the special repo, writing your bio, adding stats and badges, and avoiding common mistakes.`,
+  alternates: { canonical: `${siteConfig.url}/guide` },
   openGraph: {
     title: "How to Create a GitHub Profile README (Step-by-Step Guide)",
     description:
       "Follow this guide to set up your GitHub profile README from scratch - repo setup, AI bio, tech icons, stats cards, and design.",
-    url: "https://gprm.bhalli.dev/guide",
+    url: `${siteConfig.url}/guide`,
     type: "article",
   },
 };
@@ -25,11 +27,11 @@ const steps = [
   },
   {
     title: "Fill in your info",
-    body: "Open the GPRM generator and connect your GitHub username. Add your bio, location, and current role - GPRM pulls in what it can automatically and lets you fill the rest.",
+    body: `Open the ${siteConfig.name} generator and connect your GitHub username. Add your bio, location, and current role - ${siteConfig.name} pulls in what it can automatically and lets you fill the rest.`,
   },
   {
     title: "Write your bio with AI",
-    body: "Pick a tone - Professional, Witty, Casual, or Minimal - and let GPRM's AI bio generator draft your intro in seconds. Edit it to match your voice before moving on.",
+    body: `Pick a tone - Professional, Witty, Casual, or Minimal - and let ${siteConfig.name}'s AI bio generator draft your intro in seconds. Edit it to match your voice before moving on.`,
   },
   {
     title: "Select your tech stack",
@@ -58,30 +60,30 @@ export default function GuidePage() {
     <main>
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Guide", path: "/guide" }]} />
 
-      <section className="mx-auto max-w-3xl px-4 py-10">
-        <h1 className="text-3xl font-bold mb-4">
+      <section className="container-app max-w-3xl py-12">
+        <h1 className="heading-xl mb-4">
           How to Create a GitHub Profile README
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-8">
+        <p className="subheading mb-8">
           A GitHub profile README is the pinned Markdown page that appears at the top of your
-          GitHub profile. This guide walks through creating one from scratch, using GPRM to
+          GitHub profile. This guide walks through creating one from scratch, using {siteConfig.name} to
           skip the manual Markdown work.
         </p>
 
-        <ol className="space-y-8">
+        <ol className="space-y-6">
           {steps.map((step, i) => (
-            <li key={step.title}>
-              <h2 className="text-xl font-semibold mb-1">
+            <li key={step.title} className="card">
+              <h2 className="heading-sm mb-1.5 text-text-light dark:text-text-dark">
                 {i + 1}. {step.title}
               </h2>
-              <p className="text-slate-600 dark:text-slate-400">{step.body}</p>
+              <p className="text-body-sm text-text-muted-light dark:text-text-muted-dark">{step.body}</p>
             </li>
           ))}
         </ol>
 
-        <div className="my-10 rounded-lg border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold mb-3">Common mistakes to avoid</h2>
-          <ul className="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-400">
+        <div className="my-10 card border-amber-500/30 bg-amber-500/5">
+          <h2 className="heading-sm mb-3 text-text-light dark:text-text-dark">Common mistakes to avoid</h2>
+          <ul className="list-disc pl-5 space-y-1.5 text-body-sm text-text-muted-light dark:text-text-muted-dark">
             {mistakes.map((m) => (
               <li key={m}>{m}</li>
             ))}
@@ -91,13 +93,13 @@ export default function GuidePage() {
         <div className="flex flex-wrap gap-4">
           <Link
             href="/generator"
-            className="inline-flex items-center rounded-md bg-black px-5 py-3 text-white font-medium"
+            className="btn-primary btn-lg"
           >
-            Start building your README →
+            Start building your README <ArrowForwardIcon size={18} />
           </Link>
           <Link
             href="/templates"
-            className="inline-flex items-center rounded-md border border-gray-300 px-5 py-3 font-medium"
+            className="btn-secondary btn-lg"
           >
             Browse templates
           </Link>

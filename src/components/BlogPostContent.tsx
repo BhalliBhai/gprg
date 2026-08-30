@@ -9,7 +9,7 @@ interface BlogPostContentProps {
 }
 
 export default function BlogPostContent({ slug }: BlogPostContentProps) {
-  const [MDXComponent, setMDXComponent] = useState<ComponentType<any> | null>(null);
+  const [MDXComponent, setMDXComponent] = useState<ComponentType<{ components?: typeof mdxComponents }> | null>(null);
 
   useEffect(() => {
     let active = true;

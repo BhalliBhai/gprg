@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
-import { siteConfig } from '../config/site';
-import { getAllPosts } from '../lib/blog';
+import { siteConfig } from '@/config/site';
+import { getAllPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [

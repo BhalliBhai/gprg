@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BrokenImageIcon, HomeIcon, EditDocumentIcon } from '@/components/Icons';
 
 export default function NotFound() {
   return (
@@ -7,36 +8,36 @@ export default function NotFound() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-primary/20 blur-[120px] rounded-full opacity-30 pointer-events-none"></div>
 
       <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-2xl">
-        <div className="rounded-2xl bg-primary/10 border border-primary/20 p-6 mb-4 animate-pulse">
-          <span className="material-symbols-outlined text-6xl text-primary">broken_image</span>
+        <div className="rounded-2xl bg-primary/10 border border-primary/20 p-5 mb-2">
+          <BrokenImageIcon size={48} className="text-primary" />
         </div>
         
-        <h1 className="text-6xl sm:text-8xl font-black text-slate-900 dark:text-white tracking-tighter">
+        <h1 className="text-6xl sm:text-8xl font-black text-text-light dark:text-text-dark tracking-tighter">
           404
         </h1>
         
-        <h2 className="text-2xl sm:text-3xl font-bold dark:text-slate-200">
+        <h2 className="heading-lg">
           Page Not Found
         </h2>
         
-        <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-lg mb-4">
-          The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let&apos;s get you back on track.
+        <p className="subheading max-w-lg mb-2">
+          The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
           <Link 
             href="/" 
-            className="flex items-center justify-center gap-2 rounded-lg h-14 px-8 border border-slate-200 dark:border-primary/20 bg-white dark:bg-primary/5 text-slate-900 dark:text-white text-base font-bold hover:bg-slate-50 dark:hover:bg-primary/10 transition-all w-full sm:w-auto"
+            className="btn-secondary btn-lg w-full sm:w-auto"
           >
-            <span className="material-symbols-outlined">home</span>
+            <HomeIcon size={18} />
             Return Home
           </Link>
           <Link 
             href="/generator"
-            className="flex items-center justify-center gap-2 rounded-lg h-14 px-8 bg-primary text-background-dark text-base font-bold hover:scale-[1.02] transition-transform glow-effect w-full sm:w-auto"
+            className="btn-primary btn-lg w-full sm:w-auto"
           >
-            Go to Editor
-            <span className="material-symbols-outlined">edit_document</span>
+            Go to Generator
+            <EditDocumentIcon size={18} />
           </Link>
         </div>
       </div>

@@ -9,14 +9,14 @@ const MdxImage = ({ alt, src, className, width, height, ...props }: ComponentPro
   const parsedHeight = typeof height === "string" ? parseInt(height, 10) : height ?? 675;
 
   return (
-    <span className={`my-8 block overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950 ${className ?? ""}`}>
+    <span className={`my-8 block overflow-hidden rounded-2xl hairline-border-light dark:hairline-border bg-surface-light dark:bg-surface-dark ${className ?? ""}`}>
       <BlogImage
         src={imageSrc}
         alt={alt ?? "Blog image"}
         width={parsedWidth}
         height={parsedHeight}
         className="h-auto w-full object-cover"
-        {...(props as any)}
+        {...props}
       />
     </span>
   );
@@ -24,25 +24,25 @@ const MdxImage = ({ alt, src, className, width, height, ...props }: ComponentPro
 
 const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }) => (
-    <h1 className={`mt-8 scroll-mt-20 text-4xl font-black tracking-tight text-slate-950 dark:text-white ${className ?? ""}`} {...props} />
+    <h1 className={`heading-xl mt-8 mb-4 ${className ?? ""}`} {...props} />
   ),
   h2: ({ className, ...props }) => (
-    <h2 className={`mt-12 scroll-mt-20 text-3xl font-bold tracking-tight text-slate-900 dark:text-white ${className ?? ""}`} {...props} />
+    <h2 className={`heading-lg mt-10 mb-3 ${className ?? ""}`} {...props} />
   ),
   h3: ({ className, ...props }) => (
-    <h3 className={`mt-10 scroll-mt-20 text-2xl font-semibold text-slate-900 dark:text-white ${className ?? ""}`} {...props} />
+    <h3 className={`heading-md mt-8 mb-2 ${className ?? ""}`} {...props} />
   ),
   h4: ({ className, ...props }) => (
-    <h4 className={`mt-8 text-xl font-semibold text-slate-900 dark:text-white ${className ?? ""}`} {...props} />
+    <h4 className={`heading-sm mt-6 mb-2 ${className ?? ""}`} {...props} />
   ),
   p: ({ className, ...props }) => (
-    <p className={`mt-6 leading-8 text-slate-700 dark:text-slate-300 ${className ?? ""}`} {...props} />
+    <p className={`text-body mt-4 leading-relaxed ${className ?? ""}`} {...props} />
   ),
   ul: ({ className, ...props }) => (
-    <ul className={`mt-6 list-disc list-inside space-y-3 text-slate-700 dark:text-slate-300 ${className ?? ""}`} {...props} />
+    <ul className={`mt-4 list-disc list-inside space-y-2 text-body ${className ?? ""}`} {...props} />
   ),
   ol: ({ className, ...props }) => (
-    <ol className={`mt-6 list-decimal list-inside space-y-3 text-slate-700 dark:text-slate-300 ${className ?? ""}`} {...props} />
+    <ol className={`mt-4 list-decimal list-inside space-y-2 text-body ${className ?? ""}`} {...props} />
   ),
   li: ({ className, ...props }) => (
     <li className={`pl-1 ${className ?? ""}`} {...props} />
@@ -50,41 +50,48 @@ const mdxComponents: MDXComponents = {
   a: ({ href, className, ...props }) => (
     <Link
       href={href ?? "#"}
-      className={`text-primary underline decoration-primary/30 hover:decoration-primary hover:text-primary-dark ${className ?? ""}`}
+      className={`link font-semibold ${className ?? ""}`}
       {...props}
     />
   ),
   blockquote: ({ className, ...props }) => (
     <blockquote
-      className={`mt-8 rounded-3xl border-l-4 border-primary/40 bg-primary/5 p-6 text-slate-800 dark:border-primary/60 dark:bg-primary/10 dark:text-slate-100 ${className ?? ""}`}
+      className={`mt-6 rounded-xl border-l-4 border-primary bg-primary/5 p-4 text-text-light dark:text-text-dark ${className ?? ""}`}
       {...props}
     />
   ),
   pre: ({ className, ...props }) => (
-    <pre className={`my-8 overflow-x-auto rounded-3xl border border-slate-200 bg-slate-950/95 p-5 text-slate-100 ${className ?? ""}`} {...props} />
+    <pre className={`code-block my-6 ${className ?? ""}`} {...props} />
   ),
   code: ({ className, ...props }) => (
-    <code className={`rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-sm text-primary dark:bg-slate-800 dark:text-primary ${className ?? ""}`} {...props} />
+    <code className={`rounded px-1.5 py-0.5 font-mono text-xs text-primary bg-surface-hover-light dark:bg-surface-hover-dark ${className ?? ""}`} {...props} />
   ),
   img: MdxImage,
   table: ({ className, ...props }) => (
-    <div className="my-8 overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700">
-      <table className={`w-full border-collapse bg-slate-50 text-left text-sm text-slate-700 dark:bg-slate-950 dark:text-slate-200 ${className ?? ""}`} {...props} />
+    <div className="my-6 overflow-hidden rounded-xl hairline-border-light dark:hairline-border">
+      <table className={`w-full border-collapse bg-surface-light dark:bg-surface-dark text-left text-sm text-text-light dark:text-text-dark ${className ?? ""}`} {...props} />
     </div>
   ),
   thead: ({ className, ...props }) => (
-    <thead className={`bg-slate-100 dark:bg-slate-900 ${className ?? ""}`} {...props} />
+    <thead className={`bg-surface-hover-light dark:bg-surface-hover-dark ${className ?? ""}`} {...props} />
   ),
   tbody: ({ className, ...props }) => <tbody className={className ?? ""} {...props} />, 
   tr: ({ className, ...props }) => (
-    <tr className={`border-t border-slate-200 odd:bg-slate-50 even:bg-white dark:border-slate-800 dark:odd:bg-slate-900 dark:even:bg-slate-950 ${className ?? ""}`} {...props} />
+    <tr className={`border-t border-border-light dark:border-border-dark ${className ?? ""}`} {...props} />
   ),
   th: ({ className, ...props }) => (
-    <th className={`border border-slate-200 px-4 py-3 text-left text-sm font-semibold uppercase tracking-wide text-slate-900 dark:border-slate-800 dark:text-slate-100 ${className ?? ""}`} {...props} />
+    <th className={`border border-border-light dark:border-border-dark px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-text-light dark:text-text-dark ${className ?? ""}`} {...props} />
   ),
   td: ({ className, ...props }) => (
-    <td className={`border border-slate-200 px-4 py-3 align-top text-sm text-slate-700 dark:border-slate-800 dark:text-slate-200 ${className ?? ""}`} {...props} />
+    <td className={`border border-border-light dark:border-border-dark px-4 py-2.5 align-top text-xs text-text-muted-light dark:text-text-muted-dark ${className ?? ""}`} {...props} />
   ),
 };
+
+export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
+  return {
+    ...components,
+    ...mdxComponents,
+  };
+}
 
 export default mdxComponents;

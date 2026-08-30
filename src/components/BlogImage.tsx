@@ -19,6 +19,7 @@ export default function BlogImage({
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHasError(false);
     setIsLoaded(false);
   }, [src]);

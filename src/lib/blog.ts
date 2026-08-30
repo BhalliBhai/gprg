@@ -100,7 +100,8 @@ export function getAllPosts(): BlogPost[] {
     .map((filename) => {
       const filePath = path.join(postsDirectory, filename);
       const rawSource = fs.readFileSync(filePath, "utf8");
-      let { data, content } = matter(rawSource);
+      const { data: initialData, content } = matter(rawSource);
+      let data = initialData;
       const slug = filename.replace(/\.mdx?$/, "");
 
       // If no YAML frontmatter was found, try to extract an `export const metadata = {...}`
@@ -116,12 +117,11 @@ export function getAllPosts(): BlogPost[] {
               // Evaluate the object literal in a new Function scope to avoid leaking local scope.
               // This assumes the metadata object uses plain literals (strings, arrays, primitives).
               // It's a pragmatic fallback for MDX files that export metadata as JS.
-              // eslint-disable-next-line no-new-func
               const parsed = new Function(`return (${objectLiteral})`)();
               if (parsed && typeof parsed === "object") {
                 data = parsed;
               }
-            } catch (err) {
+            } catch {
               // If parsing fails, leave data as-is (empty) and continue; post will still be included with defaults.
             }
           }

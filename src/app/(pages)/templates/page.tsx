@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Breadcrumbs from "../../../components/Breadcrumbs";
-import FaqSection from "../../../components/FaqSection";
-import { templatesFaqs } from "../../../lib/faq-data";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import FaqSection from "@/components/FaqSection";
+import { templatesFaqs } from "@/lib/faq-data";
+import { siteConfig } from "@/config/site";
+import { ArrowForwardIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "GitHub Profile README Templates: Which One Should You Use? | GPRG",
+  title: `GitHub Profile README Templates: Which One Should You Use? | ${siteConfig.name}`,
   description:
-    "A guide to all 7 GPRG templates - Minimalist, Data-Driven, Developer, Creative, Compact, Terminal, and Corporate - and who each one is best suited for.",
-  alternates: { canonical: "https://gprg.bhalli.dev/templates" },
+    `A guide to all 7 ${siteConfig.name} templates - Minimalist, Data-Driven, Developer, Creative, Compact, Terminal, and Corporate - and who each one is best suited for.`,
+  alternates: { canonical: `${siteConfig.url}/templates` },
   openGraph: {
     title: "GitHub Profile README Templates: Which One Should You Use?",
     description:
-      "A guide to all 7 GPRG templates and who each one is best suited for - pick yours, then build it in the generator.",
-    url: "https://gprg.bhalli.dev/templates",
+      `A guide to all 7 ${siteConfig.name} templates and who each one is best suited for - pick yours, then build it in the generator.`,
+    url: `${siteConfig.url}/templates`,
     type: "website",
   },
 };
 
-// Source of truth for the 7 templates the generator actually offers.
-// Keep this in sync with the generator's own template list - if a template
-// is renamed or a new one is added there, update it here too.
 const templates = [
   {
     slug: "minimalist",
@@ -104,47 +103,42 @@ const templates = [
 export default function TemplatesPage() {
   return (
     <main>
-      {/* Breadcrumbs and FaqSection each render their own JSON-LD internally -
-          don't add a second breadcrumbJsonLd/faqJsonLd <script> here or the
-          page will emit duplicate structured data, which Google's Rich
-          Results Test will flag. */}
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Templates", path: "/templates" }]} />
 
-      <section className="mx-auto max-w-3xl px-4 py-10">
-        <h1 className="text-3xl font-bold mb-4">
+      <section className="container-app max-w-3xl py-12">
+        <h1 className="heading-xl mb-4">
           GitHub Profile README Templates: Which One Should You Use?
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">
-          GPRM&apos;s generator includes 7 templates. Pick the one that matches your goal and
+        <p className="subheading mb-6">
+          {siteConfig.name}&apos;s generator includes 7 templates. Pick the one that matches your goal and
           audience below, then build it directly in the{" "}
-          <Link href="/generator" className="text-blue-300 hover:text-blue-400 underline">
+          <Link href="/generator" className="link font-semibold">
             generator
           </Link>{" "}
           - every template is available from the same tool, so switching later just means
           selecting a different one during setup.
         </p>
 
-        {/* Quick jump list - helps skimmability and gives search/AI answer
-            engines a compact summary block to pull from. */}
+        {/* Quick jump list */}
         <ul className="mb-10 grid gap-2 sm:grid-cols-2 text-sm">
           {templates.map((t) => (
-            <li key={t.slug}>
-              <a href={`#${t.slug}`} className="text-blue-300 hover:text-blue-400 underline text-lg">
+            <li key={t.slug} className="card p-3 flex items-center justify-between">
+              <a href={`#${t.slug}`} className="link font-semibold">
                 {t.name}
               </a>
-              <span className="text-slate-500 dark:text-slate-400"> - {t.tagline}</span>
+              <span className="text-xs text-text-muted-light dark:text-text-muted-dark truncate ml-2"> {t.tagline}</span>
             </li>
           ))}
         </ul>
 
-        <div className="space-y-10">
+        <div className="space-y-8">
           {templates.map((t) => (
-            <article key={t.slug} id={t.slug} className="scroll-mt-24">
-              <h2 className="text-xl font-semibold mb-1">{t.name}</h2>
-              <p className="text-sm font-medium text-primary mb-3">{t.tagline}</p>
-              <p className="text-slate-600 dark:text-slate-400 mb-3">{t.description}</p>
-              <p className="text-sm font-medium mb-1">Best for:</p>
-              <ul className="list-disc pl-5 text-sm text-slate-600 dark:text-slate-400">
+            <article key={t.slug} id={t.slug} className="card scroll-mt-24">
+              <h2 className="heading-md mb-1 text-text-light dark:text-text-dark">{t.name}</h2>
+              <p className="text-xs font-bold text-primary mb-3">{t.tagline}</p>
+              <p className="text-body-sm text-text-muted-light dark:text-text-muted-dark mb-4">{t.description}</p>
+              <p className="text-xs font-bold text-text-light dark:text-text-dark uppercase tracking-wider mb-2">Best for:</p>
+              <ul className="list-disc pl-5 space-y-1 text-body-sm text-text-muted-light dark:text-text-muted-dark">
                 {t.bestFor.map((b) => (
                   <li key={b}>{b}</li>
                 ))}
@@ -156,9 +150,9 @@ export default function TemplatesPage() {
         <div className="mt-12">
           <Link
             href="/generator"
-            className="inline-flex items-center rounded-md bg-primary px-5 py-3 text-slate-900 font-bold"
+            className="btn-primary btn-lg"
           >
-            Open the generator →
+            Open the generator <ArrowForwardIcon size={18} />
           </Link>
         </div>
       </section>

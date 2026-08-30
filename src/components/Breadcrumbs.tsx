@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HomeIcon, ChevronRightIcon } from "./Icons";
 
 interface BreadcrumbsProps {
   items: {
@@ -9,28 +10,24 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <div className="border-b border-slate-200 dark:border-primary/10 bg-slate-50/50 dark:bg-background-dark/20 py-4 px-6">
-      <div className="mx-auto flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+    <div className="border-b border-border-light dark:border-border-dark bg-surface-light/60 dark:bg-surface-dark/60 py-3.5 px-6">
+      <div className="container-app flex items-center gap-2 text-xs font-medium text-text-muted-light dark:text-text-muted-dark">
         <Link
           href="/"
-          className="flex items-center gap-1 hover:text-primary transition-colors"
+          className="flex items-center gap-1.5 hover:text-primary transition-colors"
         >
-          <span className="material-symbols-outlined text-[1.1rem]">home</span>
+          <HomeIcon size={14} className="opacity-70" />
           <span>Home</span>
         </Link>
         {items.map((item, index) => {
-          // If the item path is root and it's the first element, skip to avoid duplicating home link
           if (item.path === "/" && index === 0) return null;
-          
           const isLast = index === items.length - 1;
 
           return (
             <div key={item.path} className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-[0.9rem] opacity-50 select-none">
-                chevron_right
-              </span>
+              <ChevronRightIcon size={12} className="opacity-40" />
               {isLast ? (
-                <span className="text-slate-950 dark:text-white font-semibold">
+                <span className="text-text-light dark:text-text-dark font-semibold">
                   {item.name}
                 </span>
               ) : (

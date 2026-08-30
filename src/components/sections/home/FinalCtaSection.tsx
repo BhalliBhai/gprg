@@ -1,25 +1,29 @@
 import Link from 'next/link';
+import { siteConfig } from '@/config/site';
+import { RocketIcon, BoltIcon, CheckCircleIcon } from '@/components/Icons';
 
 export function FinalCtaSection() {
   return (
     <section className="py-16 sm:py-24 px-6 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-8 sm:gap-10">
+      <div className="container-app text-center flex flex-col items-center gap-6 sm:gap-8 max-w-3xl mx-auto">
         <div className="rounded-full bg-primary/10 p-4 border border-primary/20 text-primary">
-          <span className="material-symbols-outlined text-4xl">rocket_launch</span>
+          <RocketIcon size={32} />
         </div>
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold dark:text-white">Ready to transform your profile?</h2>
-        <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
-          Join over 50,000+ developers who have already elevated their GitHub presence using GPRM.
+        <h2 className="heading-xl text-3xl sm:text-4xl lg:text-5xl font-bold">
+          Ready to transform your profile?
+        </h2>
+        <p className="subheading text-base sm:text-lg max-w-xl">
+          Join developers who have elevated their GitHub presence using {siteConfig.name}.
         </p>
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto pt-2">
           <Link
             href="/generator"
-            className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg h-14 px-10 bg-primary text-background-dark text-lg font-bold hover:scale-[1.05] transition-transform glow-effect"
+            className="btn-primary btn-lg w-full sm:w-auto"
           >
-            Get Started Now <span className="material-symbols-outlined">bolt</span>
+            Get Started Now <BoltIcon size={18} />
           </Link>
-          <p className="text-sm text-slate-500 dark:text-slate-500 flex items-center justify-center gap-1 mt-2 sm:mt-0">
-            <span className="material-symbols-outlined text-xs">money_off</span> Free to use. No credit card required.
+          <p className="text-xs text-text-muted-light dark:text-text-muted-dark flex items-center justify-center gap-1.5 mt-2 sm:mt-0">
+            <CheckCircleIcon size={14} className="text-primary" /> Free to use. No credit card required.
           </p>
         </div>
       </div>

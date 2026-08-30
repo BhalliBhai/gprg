@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { EditorState } from '../types';
+import {
+  UserIcon,
+  LinkIcon,
+  MailIcon,
+  ShareIcon,
+  EditNoteIcon,
+  SparklesIcon,
+  SpinnerIcon,
+  ArrowForwardIcon,
+} from '@/components/Icons';
 
 // Dynamically import MDEditor with ssr disabled
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
@@ -66,64 +76,73 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
     <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
       {/* Left Side: Basic Info & Socials */}
       <div className="xl:col-span-5 flex flex-col gap-8">
-        <section className="rounded-xl border border-primary/10 bg-white dark:bg-primary/5 p-6 shadow-sm">
-          <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
-            <span className="material-symbols-outlined text-primary">person</span>
+        <section className="rounded-xl hairline-border-light dark:hairline-border bg-surface-light dark:bg-surface-dark p-6 shadow-sm">
+          <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-text-light dark:text-text-dark">
+            <UserIcon className="text-primary" size={20} />
             Identity
           </h3>
           <div className="space-y-4">
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold opacity-80 text-slate-700 dark:text-slate-200">Full Name</label>
-              <input suppressHydrationWarning
+              <label className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark">Full Name</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.fullName}
                 onChange={(e) => handleProfileChange('fullName', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900 dark:text-white" 
+                className="input text-sm text-text-light dark:text-text-dark" 
                 placeholder="e.g. Alex Rivera" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold opacity-80 text-slate-700 dark:text-slate-200">Professional Title</label>
-              <input suppressHydrationWarning
+              <label className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark">Professional Title</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.title}
                 onChange={(e) => handleProfileChange('title', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900 dark:text-white" 
+                className="input text-sm text-text-light dark:text-text-dark" 
                 placeholder="e.g. Senior Frontend Engineer" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold opacity-80 text-slate-700 dark:text-slate-200">Portfolio / Personal Website</label>
+              <label className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark">Portfolio / Personal Website</label>
               <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sm opacity-50 text-slate-500 dark:text-slate-400">link</span>
-                <input suppressHydrationWarning
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 opacity-50 text-text-muted-light dark:text-text-muted-dark pointer-events-none">
+                  <LinkIcon size={16} />
+                </span>
+                <input
+                  suppressHydrationWarning
                   value={state.profile.website}
                   onChange={(e) => handleProfileChange('website', e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-3 pl-10 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900 dark:text-white" 
+                  className="input pl-10 text-sm text-text-light dark:text-text-dark" 
                   placeholder="https://alexrivera.dev" 
                   type="url"
                 />
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold opacity-80 text-slate-700 dark:text-slate-200">📧 Email / Contact</label>
+              <label className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark">Email / Contact</label>
               <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sm opacity-50 text-slate-500 dark:text-slate-400">mail</span>
-                <input suppressHydrationWarning
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 opacity-50 text-text-muted-light dark:text-text-muted-dark pointer-events-none">
+                  <MailIcon size={16} />
+                </span>
+                <input
+                  suppressHydrationWarning
                   value={state.profile.email}
                   onChange={(e) => handleProfileChange('email', e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-3 pl-10 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900 dark:text-white" 
+                  className="input pl-10 text-sm text-text-light dark:text-text-dark" 
                   placeholder="alex@example.com" 
                   type="email"
                 />
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold opacity-80 text-slate-700 dark:text-slate-200">✨ GitHub Username (Required)</label>
-              <input suppressHydrationWarning
+              <label className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark">GitHub Username (Required)</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.github}
                 onChange={(e) => handleProfileChange('github', e.target.value)}
-                className="w-full rounded-lg border border-primary/50 dark:border-primary bg-primary/5 p-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900 dark:text-white font-bold" 
+                className="input text-sm text-text-light dark:text-text-dark font-bold !border-primary/50 dark:!border-primary !bg-primary/5" 
                 placeholder="e.g. arivera" 
                 type="text"
               />
@@ -131,78 +150,85 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
           </div>
         </section>
 
-        <section className="rounded-xl border border-primary/10 bg-white dark:bg-primary/5 p-6 shadow-sm">
-          <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
-            <span className="material-symbols-outlined text-primary">share</span>
+        <section className="rounded-xl hairline-border-light dark:hairline-border bg-surface-light dark:bg-surface-dark p-6 shadow-sm">
+          <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-text-light dark:text-text-dark">
+            <ShareIcon className="text-primary" size={20} />
             Social Presence
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">LinkedIn Profile</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">LinkedIn Profile</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.linkedin}
                 onChange={(e) => handleProfileChange('linkedin', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="in/alexrivera" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">Twitter/X Handle</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">Twitter/X Handle</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.twitter}
                 onChange={(e) => handleProfileChange('twitter', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="@arivera" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">Instagram</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">Instagram</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.instagram}
                 onChange={(e) => handleProfileChange('instagram', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="@alex" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">Threads</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">Threads</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.threads}
                 onChange={(e) => handleProfileChange('threads', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="@alex" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">YouTube Channel</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">YouTube Channel</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.youtube}
                 onChange={(e) => handleProfileChange('youtube', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="@alexrivera" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">Twitch</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">Twitch</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.twitch}
                 onChange={(e) => handleProfileChange('twitch', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="alexriveradev" 
                 type="text"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold opacity-60 text-slate-700 dark:text-slate-200">Discord Tag</label>
-              <input suppressHydrationWarning
+              <label className="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark">Discord Tag</label>
+              <input
+                suppressHydrationWarning
                 value={state.profile.discord}
                 onChange={(e) => handleProfileChange('discord', e.target.value)}
-                className="w-full rounded-lg border border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-background-dark/50 p-2 text-sm focus:border-primary focus:outline-none text-slate-900 dark:text-white" 
+                className="input p-2 text-sm text-text-light dark:text-text-dark" 
                 placeholder="arivera#1234" 
                 type="text"
               />
@@ -213,36 +239,36 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
 
       {/* Right Side: About Me Editor */}
       <div className="xl:col-span-7 h-full flex flex-col">
-        <section className="flex flex-1 flex-col rounded-xl border border-primary/10 bg-white dark:bg-primary/5 shadow-sm min-h-[500px]">
-          <div className="flex items-center justify-between border-b border-primary/10 bg-slate-50 dark:bg-background-dark/20 p-4 rounded-t-xl">
+        <section className="flex flex-1 flex-col rounded-xl hairline-border-light dark:hairline-border bg-surface-light dark:bg-surface-dark shadow-sm min-h-[500px]">
+          <div className="flex items-center justify-between border-b border-border-light dark:border-border-dark bg-surface-hover-light dark:bg-surface-dark p-4 rounded-t-xl">
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary">edit_note</span>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">About Me</h3>
-              <span className="rounded bg-primary/10 dark:bg-primary/20 px-2 py-0.5 text-[10px] font-bold text-primary uppercase">Rich Text Support</span>
+              <EditNoteIcon className="text-primary" size={20} />
+              <h3 className="text-lg font-bold text-text-light dark:text-text-dark">About Me</h3>
+              <span className="badge badge-neutral text-[10px] uppercase font-bold">Rich Text Support</span>
             </div>
             <button
               onClick={() => setShowAiPanel(!showAiPanel)}
-              className="flex items-center gap-1.5 rounded-lg bg-primary/10 dark:bg-primary/20 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-all"
+              className="flex items-center gap-1.5 rounded-lg bg-primary/10 dark:bg-primary/20 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-all cursor-pointer"
             >
-              <span className="material-symbols-outlined text-sm">auto_awesome</span>
+              <SparklesIcon size={14} />
               Generate with AI
             </button>
           </div>
           {/* AI Generation Panel */}
           {showAiPanel && (
-            <div className="border-b border-primary/10 bg-primary/5 dark:bg-primary/10 p-4">
+            <div className="border-b border-border-light dark:border-border-dark bg-primary/5 dark:bg-primary/10 p-4">
               <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4">
                 <div className="flex-1 w-full">
-                  <label className="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-2 block">Tone</label>
+                  <label className="text-xs font-bold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-2 block">Tone</label>
                   <div className="flex flex-wrap gap-2">
                     {(['professional', 'witty', 'casual', 'minimal'] as const).map((tone) => (
                       <button
                         key={tone}
                         onClick={() => setAiTone(tone)}
-                        className={`rounded-lg px-3 py-1.5 text-xs font-bold capitalize transition-all ${
+                        className={`rounded-lg px-3 py-1.5 text-xs font-bold capitalize transition-all cursor-pointer ${
                           aiTone === tone
                             ? 'bg-primary text-background-dark shadow-md'
-                            : 'bg-white dark:bg-background-dark/50 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-primary/20 hover:border-primary/50'
+                            : 'bg-surface-light dark:bg-surface-dark text-text-muted-light dark:text-text-muted-dark border border-border-light dark:border-border-dark hover:border-primary/50'
                         }`}
                       >
                         {tone}
@@ -253,16 +279,16 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
                 <button
                   onClick={handleGenerateAI}
                   disabled={isGenerating || !state.profile.fullName || !state.profile.github}
-                  className="flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-black text-background-dark shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 whitespace-nowrap"
+                  className="btn-primary flex items-center gap-2 py-2.5 text-sm whitespace-nowrap cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isGenerating ? (
                     <>
-                      <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+                      <SpinnerIcon size={16} />
                       Generating...
                     </>
                   ) : (
                     <>
-                      <span className="material-symbols-outlined text-sm">auto_awesome</span>
+                      <SparklesIcon size={16} />
                       Generate Bio
                     </>
                   )}
@@ -270,14 +296,14 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
               </div>
               {!state.profile.fullName || !state.profile.github ? (
                 <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-2 font-semibold">
-                  ⚠️ Fill in your Name and GitHub Username above to enable AI generation.
+                  Fill in your Name and GitHub Username above to enable AI generation.
                 </p>
               ) : null}
               {aiError && (
-                <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-2 font-semibold">💡 {aiError}</p>
+                <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-2 font-semibold">{aiError}</p>
               )}
               {aiRemaining !== null && (
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2">
+                <p className="text-[10px] text-text-muted-light dark:text-text-muted-dark mt-2">
                   {aiRemaining} generation{aiRemaining !== 1 ? 's' : ''} remaining this hour
                 </p>
               )}
@@ -324,12 +350,10 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
                 font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
                 font-size: 14px !important;
                 line-height: 1.5 !important;
-                // color: #11d452 !important;
               }
               .w-md-editor-content {
                 background-color: transparent !important;
               }
-              /* Fix for dropdown menus in toolbar */
               .w-md-editor-toolbar-divider + .w-md-editor-toolbar-child,
               .w-md-editor-toolbar li > ul {
                 background-color: #ffffff !important;
@@ -365,17 +389,17 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
               />
             </div>
           </div>
-          <div className="border-t border-primary/10 bg-slate-50 dark:bg-background-dark/20 p-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-[10px] uppercase tracking-wider opacity-60 dark:opacity-40 font-bold text-slate-500 dark:text-slate-400 w-full sm:w-auto text-center sm:text-left">
+          <div className="border-t border-border-light dark:border-border-dark bg-surface-hover-light dark:bg-surface-dark p-4 flex flex-col sm:flex-row justify-between items-center gap-4 rounded-b-xl">
+            <p className="text-[10px] uppercase tracking-wider font-bold text-text-muted-light dark:text-text-muted-dark w-full sm:w-auto text-center sm:text-left">
               Characters: {state.profile.about.length} / 2000
             </p>
             <div className="flex gap-4 w-full sm:w-auto">
-              <button onClick={clearAbout} className="text-sm font-bold opacity-70 hover:opacity-100 transition-opacity text-slate-600 dark:text-slate-300 px-4">
+              <button onClick={clearAbout} className="text-sm font-bold opacity-70 hover:opacity-100 transition-opacity text-text-muted-light dark:text-text-muted-dark px-4 cursor-pointer">
                 Clear All
               </button>
-              <button onClick={nextStep} className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-black text-background-dark shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+              <button onClick={nextStep} className="btn-primary flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 py-3 text-sm cursor-pointer">
                 Continue to Step 2
-                <span className="material-symbols-outlined font-bold">arrow_forward</span>
+                <ArrowForwardIcon size={16} />
               </button>
             </div>
           </div>

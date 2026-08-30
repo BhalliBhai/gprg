@@ -20,6 +20,7 @@ export function Step5Export({ state, prevStep }: StepProps) {
   // Auto-sync from state ONLY until the user makes a manual edit.
   useEffect(() => {
     if (!isDirty) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMarkdown(generateMarkdown(state));
     }
   }, [state, isDirty]);

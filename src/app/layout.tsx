@@ -3,9 +3,9 @@ import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
-import { siteConfig } from '../config/site'
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { siteConfig } from "@/config/site";
 import Script from "next/script";
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,14 +16,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default:
-      "GPRG - Free GitHub Profile README Generator/Maker | Create Professional READMEs",
-    template: "%s | GPRG",
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Create stunning GitHub Profile READMEs in minutes with GPRG - the best, continuously improving, free, no-code AI readme generator. AI-powered profile summaries, 200+ tech icons, dynamic stats & premium templates.",
+  description: siteConfig.description,
   keywords: [
-    // Home page keywords Suggested by Claude
     "github readme editor",
     "build github profile readme",
     "github readme builder online",
@@ -34,8 +31,8 @@ export const metadata: Metadata = {
     "github stats card generator",
     "github streak stats",
     "ai readme generator",
+    "gprg",
     "gprm",
-    // Primary high-volume keywords
     "github profile readme generator",
     "github readme generator",
     "github profile readme maker",
@@ -44,86 +41,26 @@ export const metadata: Metadata = {
     "ai github profile generator",
     "ai github readme maker",
     "best github readme generator",
-    // Long-tail transactional keywords
     "free github profile readme generator online",
     "create github profile readme online",
     "github profile readme builder no code",
     "professional github profile readme creator",
     "best github readme generator 2026",
-    // Feature-specific keywords
     "github readme generator with stats",
     "github readme maker with icons",
     "github profile readme template generator",
     "github readme generator with badges",
-    "github stats card generator",
-    "github streak stats readme",
-    // Informational keywords
     "how to create github profile readme",
     "github profile customization",
     "developer portfolio readme",
     "markdown readme builder",
-    // Brand keywords
-    "GPRM",
-    "github profile readme maker GPRM",
-    "Bhalli",
-    "Bhalli B",
-    "Bhalli Dev",
-    "Full Stack Developer",
-    // Brand keywords
-    "GPRG",
-    "github profile readme maker GPRG",
-    "github readme generator GPRG",
-    "readme.md generator GPRG",
-    "github profile readme",
-    "github profile readme generator",
-    // Other trending keywords
-    "GitHub",
-    "Markdown",
-    "github profile readme",
-    "github readme generator",
-    "openclaw github",
-    "awesome github profile readmes",
-    "github profile stats",
-    "github trending",
-    "readme maker",
-    "ai for developers",
-    "readme ai",
-    "ai readme generator",
-    "ai documentation tool",
-    "ai code description",
-    "macbook neo",
-    "markdown resume",
-    "GitHub Profile README Generator",
-    "GitHub Stats Card / README Stats",
-    "Markdown Profile Generator",
-    "Animated Social Badges/Icons",
-    "README.md Template Generator",
-    "Wakatime Stats",
-    "Dev.to/Medium Blog Integration",
-    "README Template for Projects/React",
-    "github profile readme generator",
-    "github stats card",
-    "github readme stats",
-    "markdown profile generator",
-    "animated social badges",
-    "animated social icons",
-    "readme.md template generator",
-    "wakatime stats",
-    "dev.to blog integration",
-    "medium blog integration",
-    "readme template for projects",
-    "readme template for react",
-    "gprm",
-    "gprm github profile readme maker",
-    "gprm github profile readme generator",
-    "gprm github profile readme",
-    "gprm github",
-    "github profile readme maker gprm",
+    siteConfig.creatorName,
+    siteConfig.name,
     "open source github readme generator",
   ],
-  authors: [{ name: "Bhalli B", url: siteConfig.creatorUrl }],
-  creator: "Bhalli B",
-  publisher: "Bhalli B",
+  authors: [{ name: siteConfig.creatorName, url: siteConfig.creatorUrl }],
+  creator: siteConfig.creatorName,
+  publisher: siteConfig.creatorName,
   category: "Technology",
   robots: {
     index: true,
@@ -137,27 +74,25 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "GPRM - Free GitHub Profile README Generator",
-    description:
-      "Create professional, data-driven GitHub Profile READMEs in minutes. 200+ tech icons, dynamic stats, premium templates. Free & no signup.",
+    title: siteConfig.title,
+    description: siteConfig.description,
     type: "website",
     url: siteConfig.url,
-    siteName: "GPRM - GitHub Profile README Maker",
+    siteName: siteConfig.fullName,
     locale: "en_US",
     images: [
       {
         url: `${siteConfig.url}/icon.svg`,
         width: 512,
         height: 512,
-        alt: "GPRM - GitHub Profile README Generator Logo",
+        alt: `${siteConfig.name} - GitHub Profile README Generator Logo`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GPRM - Free GitHub Profile README Generator",
-    description:
-      "Build stunning GitHub Profile READMEs in minutes. 200+ icons, stats, templates. Free & open.",
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: [`${siteConfig.url}/icon.svg`],
   },
   alternates: {
@@ -174,10 +109,9 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebApplication",
-      name: "GPRM - GitHub Profile README Generator",
+      name: siteConfig.fullName,
       url: siteConfig.url,
-      description:
-        "The best free GitHub Profile README Generator ever built. Continually improving with AI-powered profile summaries, 200+ tech icons, dynamic GitHub stats, streak cards, premium templates, and one-click markdown export.",
+      description: siteConfig.description,
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Any",
       browserRequirements: "Requires a modern web browser",
@@ -188,7 +122,7 @@ const jsonLd = {
       },
       author: {
         "@type": "Person",
-        name: "Bhalli B",
+        name: siteConfig.creatorName,
         url: siteConfig.creatorUrl,
       },
       featureList: [
@@ -210,10 +144,10 @@ const jsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "What is GPRM?",
+          name: `What is ${siteConfig.name}?`,
           acceptedAnswer: {
             "@type": "Answer",
-            text: "GPRM (GitHub Profile README Maker) is a free, no-code online tool that helps developers create professional, data-driven GitHub Profile READMEs in minutes. It features 200+ tech icons, dynamic GitHub stats, premium templates, and one-click markdown export.",
+            text: `${siteConfig.name} (${siteConfig.fullName}) is a free, no-code online tool that helps developers create professional, data-driven GitHub Profile READMEs in minutes. It features 200+ tech icons, dynamic GitHub stats, premium templates, and one-click markdown export.`,
           },
         },
         {
@@ -221,47 +155,30 @@ const jsonLd = {
           name: "How do I create a GitHub Profile README?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "To create a GitHub Profile README with GPRM: 1) Use the AI tools to generate a bio or fill in your info, 2) Select your tech stack from 200+ icons, 3) Choose a premium template design, 4) Copy or download the generated markdown.",
+            text: `To create a GitHub Profile README with ${siteConfig.name}: 1) Use the AI tools to generate a bio or fill in your info, 2) Select your tech stack from 200+ icons, 3) Choose a premium template design, 4) Copy or download the generated markdown.`,
           },
         },
         {
           "@type": "Question",
-          name: "Is GPRM free to use?",
+          name: `Is ${siteConfig.name} free to use?`,
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, GPRM is completely free to use. There is no signup required, no credit card needed, and no hidden fees. All features including premium templates, tech icons, and GitHub stats integration are available at no cost.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "What features does GPRM offer?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "GPRM offers: 200+ tech stack icons and badges, dynamic GitHub stats cards, streak statistics, multiple premium templates, real-time markdown preview, social media link integration, one-click copy to clipboard, and direct markdown file download.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Do I need coding skills to use GPRM?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "No, GPRM is a no-code tool. You simply fill in your information, select your skills from the visual icon grid, choose a template, and the tool generates the markdown code for you automatically.",
+            text: `Yes, ${siteConfig.name} is completely free to use. There is no signup required, no credit card needed, and no hidden fees. All features including premium templates, tech icons, and GitHub stats integration are available at no cost.`,
           },
         },
       ],
     },
     {
       "@type": "Organization",
-      name: "GPRM",
+      name: siteConfig.name,
       url: siteConfig.url,
       logo: `${siteConfig.url}/icon.svg`,
-      description:
-        "GPRM is the leading, continuously improving, free, open-source GitHub Profile README Generator built by Bhalli B. It is widely considered the best tool ever built for creating professional profile READMEs with AI.",
+      description: siteConfig.description,
       founder: {
         "@type": "Person",
-        name: "Bhalli B",
-        url: siteConfig.creatorUrl
-      }
+        name: siteConfig.creatorName,
+        url: siteConfig.creatorUrl,
+      },
     },
   ],
 };
@@ -272,9 +189,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="dark" lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="apple-mobile-web-app-title" content="GPRM" />
+        <meta name="apple-mobile-web-app-title" content={siteConfig.name} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -282,7 +204,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${spaceGrotesk.variable} container mx-auto antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-background-dark font-display`}
+        className={`${spaceGrotesk.variable} antialiased bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark selection:bg-primary selection:text-white font-sans`}
       >
         <div className="relative min-h-screen w-full flex flex-col overflow-x-clip grid-pattern">
           <Header />

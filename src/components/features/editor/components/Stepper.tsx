@@ -1,4 +1,6 @@
 import { EDITOR_STEPS as steps } from '../config/steps';
+import { CheckCircleIcon, RadioCheckedIcon, CircleIcon } from '@/components/Icons';
+
 interface StepperProps {
   currentStep: number;
 }
@@ -17,13 +19,13 @@ export function Stepper({ currentStep }: StepperProps) {
           <span className="text-xs font-bold uppercase tracking-widest text-primary">
             Step {currentStep} of {steps.length}
           </span>
-          <h1 className="text-2xl sm:text-3xl font-black dark:text-white">
+          <h1 className="heading-lg text-2xl sm:text-3xl font-black text-text-light dark:text-text-dark">
             {currentStepData.title}
           </h1>
         </div>
         {currentStep < steps.length && (
           <div className="text-left sm:text-right hidden sm:block">
-            <span className="text-sm font-medium opacity-60 dark:text-slate-400">
+            <span className="text-sm font-medium text-text-muted-light dark:text-text-muted-dark">
               Next: {currentStepData.nextLabel}
             </span>
           </div>
@@ -47,11 +49,15 @@ export function Stepper({ currentStep }: StepperProps) {
           return (
             <div 
               key={step.id} 
-              className={`flex items-center gap-2 ${isCurrent ? 'text-primary' : isCompleted ? 'text-primary/70' : 'opacity-30 dark:text-slate-400'}`}
+              className={`flex items-center gap-2 ${isCurrent ? 'text-primary' : isCompleted ? 'text-primary/70' : 'opacity-40 text-text-muted-light dark:text-text-muted-dark'}`}
             >
-              <span className="material-symbols-outlined text-sm">
-                {isCompleted ? 'check_circle' : isCurrent ? 'radio_button_checked' : 'circle'}
-              </span>
+              {isCompleted ? (
+                <CheckCircleIcon size={16} className="text-primary" />
+              ) : isCurrent ? (
+                <RadioCheckedIcon size={16} className="text-primary" />
+              ) : (
+                <CircleIcon size={16} />
+              )}
               <span className={`text-[10px] sm:text-xs font-bold uppercase hidden md:inline-block ${isCurrent ? 'text-primary' : ''}`}>
                 {step.label}
               </span>
