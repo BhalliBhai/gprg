@@ -74,15 +74,15 @@ export const metadata = {
 
 ![AI-generated text populating a GitHub profile bio card](/images/blogs/ai-github-bio-generator/cover.png)
 
-If your GitHub profile bio still says "Just a developer" or nothing at all, you're leaving the first three seconds of every recruiter, collaborator, and client visit completely blank — and that gap is exactly what GPRG's AI Bio Generator was built to close, turning a form you fill out in under a minute into a tailored, tone-matched bio generated in roughly 1-2 seconds by Google's Gemini model. By the end of this post you'll know exactly how the feature works under the hood, why a generated bio consistently outperforms a copy-pasted template, and how to generate your own for free at [gprg.bhalli.dev](https://gprg.bhalli.dev).
+If your GitHub profile bio still says "Just a developer" or nothing at all, you're leaving the first three seconds of every recruiter, collaborator, and client visit completely blank - and that gap is exactly what GPRG's AI Bio Generator was built to close, turning a form you fill out in under a minute into a tailored, tone-matched bio generated in roughly 1-2 seconds by Google's Gemini model. By the end of this post you'll know exactly how the feature works under the hood, why a generated bio consistently outperforms a copy-pasted template, and how to generate your own for free at [gprg.bhalli.dev](https://gprg.bhalli.dev).
 
 ---
 
 ## 1. Why Does Your GitHub Profile Bio Actually Matter?
 
-Your GitHub profile bio is the single piece of text that loads before anything else — before your pinned repos render, before your contribution graph loads, before a recruiter scrolls — so it functions as your elevator pitch whether you write one or not. I've reviewed profiles for clients where the bio field was either empty or a single unpunctuated sentence like "developer coder programmer," and in both cases the visitor's next action was to close the tab, not scroll further.
+Your GitHub profile bio is the single piece of text that loads before anything else - before your pinned repos render, before your contribution graph loads, before a recruiter scrolls - so it functions as your elevator pitch whether you write one or not. I've reviewed profiles for clients where the bio field was either empty or a single unpunctuated sentence like "developer coder programmer," and in both cases the visitor's next action was to close the tab, not scroll further.
 
-The blank-profile problem isn't a writing problem, it's a friction problem: most developers know they *should* write something better, but staring at an empty text field with no framing is exactly the kind of task that gets postponed indefinitely. That's the specific gap an AI bio generator closes — not by writing better prose than you could eventually produce yourself, but by removing the blank-page moment entirely.
+The blank-profile problem isn't a writing problem, it's a friction problem: most developers know they *should* write something better, but staring at an empty text field with no framing is exactly the kind of task that gets postponed indefinitely. That's the specific gap an AI bio generator closes - not by writing better prose than you could eventually produce yourself, but by removing the blank-page moment entirely.
 
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
   <div className="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md">
@@ -99,7 +99,7 @@ The blank-profile problem isn't a writing problem, it's a friction problem: most
 ```
 
       <div className="text-xs text-red-400/80 leading-relaxed mt-2 font-light">
-        Generic, low-effort, and interchangeable with thousands of other profiles — it signals nothing about what you actually build or how you communicate.
+        Generic, low-effort, and interchangeable with thousands of other profiles - it signals nothing about what you actually build or how you communicate.
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@ A Full Stack Developer who turns caffeine into code ☕
 ```
 
       <div className="text-xs text-emerald-400/80 leading-relaxed mt-4 font-light">
-        Generated from real input (name, stack, current focus) in a "Witty" tone — specific enough to be memorable, structured enough to scan in five seconds.
+        Generated from real input (name, stack, current focus) in a "Witty" tone - specific enough to be memorable, structured enough to scan in five seconds.
       </div>
     </div>
   </div>
@@ -130,21 +130,21 @@ A Full Stack Developer who turns caffeine into code ☕
 
 ## 2. What Makes GPRG's AI Bio Generator Different From Every Other README Tool?
 
-GPRG is the first GitHub profile README generator to ship a built-in AI bio writer rather than a static template library, which matters because every competing toolS — Followed the original README-generator pattern — still asks you to either write your own "About Me" copy or pick from a fixed list of pre-written lines that thousands of other profiles are also using.
+GPRG is the first GitHub profile README generator to ship a built-in AI bio writer rather than a static template library, which matters because every competing toolS - Followed the original README-generator pattern - still asks you to either write your own "About Me" copy or pick from a fixed list of pre-written lines that thousands of other profiles are also using.
 
-The AI Bio Generator sits inside the same `/generator` flow as the rest of GPRG's tools (skill icons, GitHub stats cards, contribution streaks), so you're not bouncing to a separate app. You pick a tone — Professional, Witty, Casual, or Minimal — fill in a short form (role, current focus, tech stack, one or two personal details), and the model generates 3-5 lines of bio copy formatted as ready-to-use markdown, including the emoji conventions that dominate high-engagement GitHub profiles.
+The AI Bio Generator sits inside the same `/generator` flow as the rest of GPRG's tools (skill icons, GitHub stats cards, contribution streaks), so you're not bouncing to a separate app. You pick a tone - Professional, Witty, Casual, or Minimal - fill in a short form (role, current focus, tech stack, one or two personal details), and the model generates 3-5 lines of bio copy formatted as ready-to-use markdown, including the emoji conventions that dominate high-engagement GitHub profiles.
 
-As a Certified Project Manager, I built the tone options as a fixed enum rather than a free-text "describe your desired tone" field on purpose — open-ended tone instructions produce inconsistent output length and formatting across users, while a constrained set of four tones keeps generation time and output structure predictable, which matters when you're optimizing for a sub-2-second response.
+As a Certified Project Manager, I built the tone options as a fixed enum rather than a free-text "describe your desired tone" field on purpose - open-ended tone instructions produce inconsistent output length and formatting across users, while a constrained set of four tones keeps generation time and output structure predictable, which matters when you're optimizing for a sub-2-second response.
 
 ---
 
 ## 3. How Does the AI Bio Generator Actually Work Under the Hood?
 
-The generator is a straightforward prompt-engineering pipeline on top of Google's Generative AI SDK, not a fine-tuned model — the quality comes from a carefully constrained prompt template, not model training. GPRG's stack is Next.js (App Router) end to end, so the bio generator lives as a server-side API route that the client-side editor calls directly.
+The generator is a straightforward prompt-engineering pipeline on top of Google's Generative AI SDK, not a fine-tuned model - the quality comes from a carefully constrained prompt template, not model training. GPRG's stack is Next.js (App Router) end to end, so the bio generator lives as a server-side API route that the client-side editor calls directly.
 
 ```typescript
 // app/api/generate-bio/route.ts
-// Server-side route — the Gemini API key never reaches the client bundle.
+// Server-side route - the Gemini API key never reaches the client bundle.
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -179,7 +179,7 @@ Use GitHub-profile conventions (short lines, relevant emoji, no headers).`;
     const bio = result.response.text();
     return NextResponse.json({ bio });
   } catch (err) {
-    // Gemini rate limits return 429s under burst load — surface a clean
+    // Gemini rate limits return 429s under burst load - surface a clean
     // retry message instead of leaking the raw SDK error to the client.
     return NextResponse.json(
       { error: "Bio generation failed, please retry in a moment." },
@@ -194,7 +194,7 @@ The client side is a thin fetch wrapper with an optimistic loading state, since 
 ```typescript
 // components/AiBioGenerator.tsx (excerpt)
 // Optimistic UI: show a skeleton immediately, swap in the real bio
-// the moment the response resolves — no spinner-then-jump.
+// the moment the response resolves - no spinner-then-jump.
 async function generateBio(formState: BioFormState) {
   setStatus("generating");
   const startedAt = performance.now();
@@ -222,13 +222,13 @@ async function generateBio(formState: BioFormState) {
 ```
 
 ![AI bio generation pipeline from form input to markdown output](/images/blogs/ai-github-bio-generator/ai-bio-pipeline.png)
-*Figure 1: The bio generator's request path — form input and tone selection go to a Next.js API route, which prompts Gemini 2.0 Flash server-side and returns markdown the editor drops straight into the live README preview.*
+*Figure 1: The bio generator's request path - form input and tone selection go to a Next.js API route, which prompts Gemini 2.0 Flash server-side and returns markdown the editor drops straight into the live README preview.*
 
 ---
 
 ## 4. How Much Time Does an AI-Generated Bio Actually Save You?
 
-The time saved isn't just the writing itself — it's the elimination of the revision loop most developers get stuck in when staring at a blank bio field, rewriting the same two sentences four or five times before giving up and leaving it half-finished.
+The time saved isn't just the writing itself - it's the elimination of the revision loop most developers get stuck in when staring at a blank bio field, rewriting the same two sentences four or five times before giving up and leaving it half-finished.
 
 <div className="flex flex-col items-center justify-center my-8 p-6 rounded-2xl border border-black/10 dark:border-white/10 bg-white/5 dark:bg-black/10 backdrop-blur-md shadow-lg max-w-4xl mx-auto text-center">
   <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3 font-semibold font-sans">Bio Completion Time Model</div>
@@ -246,13 +246,13 @@ The time saved isn't just the writing itself — it's the elimination of the rev
 <div className="flex flex-col items-center justify-center my-6 p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md shadow-lg max-w-4xl mx-auto text-center font-sans">
   <div className="text-xs uppercase tracking-wider text-red-500 mb-3 font-semibold">Writing It Yourself</div>
   <div className="text-xl font-bold text-red-400 font-mono">T = 5min + (4 × 3min) = 17min</div>
-  <div className="text-xs text-red-400/80 mt-2 font-light">Most developers I've talked to describe 3-5 rewrite passes before settling on wording they don't hate — and a meaningful share never finish, leaving the field blank.</div>
+  <div className="text-xs text-red-400/80 mt-2 font-light">Most developers I've talked to describe 3-5 rewrite passes before settling on wording they don't hate - and a meaningful share never finish, leaving the field blank.</div>
 </div>
 
 <div className="flex flex-col items-center justify-center my-6 p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-md shadow-lg max-w-4xl mx-auto text-center font-sans">
   <div className="text-xs uppercase tracking-wider text-emerald-500 mb-3 font-semibold">GPRG AI Bio Generator</div>
   <div className="text-xl font-bold text-emerald-400 font-mono">T = 1.2s + (1 × 20s) = ~21s</div>
-  <div className="text-xs text-emerald-400/80 mt-2 font-light">Most users make one tone swap or word tweak, not a full rewrite — because the starting point is already structured and specific instead of blank.</div>
+  <div className="text-xs text-emerald-400/80 mt-2 font-light">Most users make one tone swap or word tweak, not a full rewrite - because the starting point is already structured and specific instead of blank.</div>
 </div>
 
 ---
@@ -280,24 +280,24 @@ The time saved isn't just the writing itself — it's the elimination of the rev
         <td className="p-4 text-sm text-gray-600 dark:text-gray-400">Copy a popular template's "About Me"</td>
         <td className="p-4 text-sm text-gray-600 dark:text-gray-400">~1 min</td>
         <td className="p-4 text-sm text-red-500 font-semibold">None</td>
-        <td className="p-4 text-sm text-red-500 font-semibold">High — thousands of identical profiles</td>
+        <td className="p-4 text-sm text-red-500 font-semibold">High - thousands of identical profiles</td>
       </tr>
       <tr className="hover:bg-white/5 transition-colors">
         <td className="p-4 text-sm text-gray-600 dark:text-gray-400">GPRG AI Bio Generator</td>
         <td className="p-4 text-sm text-emerald-500 font-semibold">~20-30 sec</td>
-        <td className="p-4 text-sm text-emerald-500 font-semibold">High — built from your real input</td>
-        <td className="p-4 text-sm text-gray-600 dark:text-gray-400">Low — generated per-input, not reused copy</td>
+        <td className="p-4 text-sm text-emerald-500 font-semibold">High - built from your real input</td>
+        <td className="p-4 text-sm text-gray-600 dark:text-gray-400">Low - generated per-input, not reused copy</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-If you want the rest of the profile to match — stats cards, streaks, and skill icons around that bio — the [complete walkthrough for building a GitHub profile README in 2026](/blog/how-to-create-github-profile-readme-2026) covers the full generator flow, and [this comparison of GPRG against writing markdown by hand](https://gprg.bhalli.dev/blog/gprg-vs-manual-markdown-readme-generator) breaks down where a generator earns its place versus raw markdown.
+If you want the rest of the profile to match - stats cards, streaks, and skill icons around that bio - the [complete walkthrough for building a GitHub profile README in 2026](/blog/how-to-create-github-profile-readme-2026) covers the full generator flow, and [this comparison of GPRG against writing markdown by hand](https://gprg.bhalli.dev/blog/gprg-vs-manual-markdown-readme-generator) breaks down where a generator earns its place versus raw markdown.
 
 ---
 
 ## 6. Conclusion and Actionable Roadmap
 
-An AI-generated bio isn't about outsourcing your voice to a model — it's about removing the blank-page tax that keeps thousands of otherwise-strong GitHub profiles sitting on a placeholder sentence, and doing it in the ~20-30 seconds a busy developer actually has for this task instead of the 15-20 minutes it demands when written from scratch. Pick a tone, fill in four fields, and you get a structured, specific starting point you can still edit — which is a meaningfully different starting line than an empty text box.
+An AI-generated bio isn't about outsourcing your voice to a model - it's about removing the blank-page tax that keeps thousands of otherwise-strong GitHub profiles sitting on a placeholder sentence, and doing it in the ~20-30 seconds a busy developer actually has for this task instead of the 15-20 minutes it demands when written from scratch. Pick a tone, fill in four fields, and you get a structured, specific starting point you can still edit - which is a meaningfully different starting line than an empty text box.
 
 **Stop leaving your profile's first three seconds blank:** GPRG is a free, open-source (MIT-licensed) GitHub README generator built on Next.js, and its AI Bio Generator is the only one in the category powered by Google's Gemini model directly inside the editor. [Contact me today to book a 30-minute developer-branding audit.](https://bhalli.dev/booking)

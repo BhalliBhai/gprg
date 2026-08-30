@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon } from "../Icons";
 
 function subscribe() {
-  // No external events to subscribe to — mount status never changes after
+  // No external events to subscribe to - mount status never changes after
   // the initial client render, so this is a no-op unsubscribe.
   return () => {};
 }
