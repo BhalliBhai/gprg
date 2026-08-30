@@ -108,7 +108,7 @@ export function Step5Export({ state, prevStep }: StepProps) {
 
       {/* Live split editor + preview */}
       <div className="rounded-2xl border-2 border-primary/30 shadow-[0_0_15px_rgba(17,212,82,0.2)] overflow-hidden bg-slate-900">
-        <div className="bg-[#161b22] px-6 py-3 flex items-center justify-between border-b border-slate-800">
+        <div className="bg-surface-dark px-6 py-3 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
               <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
@@ -122,7 +122,7 @@ export function Step5Export({ state, prevStep }: StepProps) {
           </span>
         </div>
 
-        <div data-color-mode="dark" className="[&_.w-md-editor]:min-h-[600px]">
+        <div data-color-mode="dark" className="[&_.w-md-editor]:min-h-150">
           <MDEditor
             value={markdown}
             onChange={handleEditorChange}

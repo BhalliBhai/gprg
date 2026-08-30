@@ -214,7 +214,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <GoogleAnalytics gaId={"G-D4902R6XMY"} />
+        <GoogleAnalytics gaId={"G-PVRCXDQL3P"} />
         <Script
           id="adsense-init"
           async

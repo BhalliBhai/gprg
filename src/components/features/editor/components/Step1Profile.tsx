@@ -142,7 +142,7 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
                 suppressHydrationWarning
                 value={state.profile.github}
                 onChange={(e) => handleProfileChange('github', e.target.value)}
-                className="input text-sm text-text-light dark:text-text-dark font-bold !border-primary/50 dark:!border-primary !bg-primary/5" 
+                className="input text-sm text-text-light dark:text-text-dark font-bold border-primary/50! dark:border-primary! bg-primary/5!" 
                 placeholder="e.g. arivera" 
                 type="text"
               />
@@ -239,7 +239,7 @@ export function Step1Profile({ state, setState, nextStep }: StepProps) {
 
       {/* Right Side: About Me Editor */}
       <div className="xl:col-span-7 h-full flex flex-col">
-        <section className="flex flex-1 flex-col rounded-xl hairline-border-light dark:hairline-border bg-surface-light dark:bg-surface-dark shadow-sm min-h-[500px]">
+        <section className="flex flex-1 flex-col rounded-xl hairline-border-light dark:hairline-border bg-surface-light dark:bg-surface-dark shadow-sm min-h-125">
           <div className="flex items-center justify-between border-b border-border-light dark:border-border-dark bg-surface-hover-light dark:bg-surface-dark p-4 rounded-t-xl">
             <div className="flex items-center gap-3">
               <EditNoteIcon className="text-primary" size={20} />

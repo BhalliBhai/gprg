@@ -172,7 +172,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
 
       {/* Right Panel: Preview Grid */}
       <section className="lg:col-span-8">
-        <div className="relative rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden min-h-[600px] bg-slate-50/50 dark:bg-[#0a160e]">
+        <div className="relative rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden min-h-150 bg-slate-50/50 dark:bg-[#0a160e]">
           
           {/* Subtle Grid Background */}
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(17, 212, 82, 0.4) 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
@@ -182,10 +182,10 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
             <span className="text-xs font-bold uppercase tracking-wider text-primary">Live Preview</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center min-h-[600px] p-8 gap-6 relative z-0">
+          <div className="flex flex-col items-center justify-center min-h-150 p-8 gap-6 relative z-0">
             
              {state.analytics.showVisitorBadge && (
-              <div className="flex justify-start w-full max-w-[495px]">
+              <div className="flex justify-start w-full max-w-123.75">
                 <Image 
                   src={`https://komarev.com/ghpvc/?username=${githubUser}&color=11d452&style=for-the-badge`}
                   alt="Visitor Badge" 
@@ -201,7 +201,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               <Image 
                 src={`https://github-profile-trophy-mu.vercel.app/?username=${githubUser}&theme=${state.analytics.theme === 'transparent' ? 'radical' : state.analytics.theme}&no-frame=true&no-bg=true&margin-w=15`}
                 alt="GitHub Trophies" 
-                className="w-full max-w-[800px] hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-200 hover:scale-105 transition-transform duration-500"
                 width={800}
                 height={200}
                 style={{ height: 'auto' }}
@@ -212,19 +212,19 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               <Image 
                 src={`https://github-readme-stats-eight-theta.vercel.app/api?username=${githubUser}&show_icons=true&hide_border=true&title_color=11d452&icon_color=11d452${themeParam}`}
                 alt="GitHub Stats" 
-                className="w-full max-w-[495px] rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-123.75 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
                 width={495}
                 height={192}
                 style={{ height: 'auto' }}
               />
             )}
             
-            <div className="flex flex-col md:flex-row gap-6 w-full max-w-[495px] md:max-w-none justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-6 w-full max-w-123.75 md:max-w-none justify-center items-center">
               {state.analytics.showLanguages && (
                 <Image 
                   src={`https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${githubUser}&layout=compact&hide_border=true&title_color=11d452${themeParam}`}
                   alt="Top Languages" 
-                  className="rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 w-full max-w-[300px]"
+                  className="rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 w-full max-w-75"
                   width={300}
                   height={150}
                   style={{ height: 'auto' }}
@@ -235,7 +235,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
                 <Image 
                   src={`https://github-readme-streak-stats.herokuapp.com/?user=${githubUser}&hide_border=true&ring=11d452&fire=11d452&currStreakLabel=11d452${themeParam}`}
                   alt="GitHub Streak" 
-                  className="rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 w-full max-w-[400px]"
+                  className="rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 w-full max-w-100"
                   width={400}
                   height={150}
                   style={{ height: 'auto' }}
@@ -247,7 +247,7 @@ export function Step3Analytics({ state, setState, nextStep, prevStep }: StepProp
               <Image 
                 src={`https://github-readme-activity-graph.vercel.app/graph?username=${githubUser}&bg_color=102216&color=11d452&line=11d452&point=11d452&area=true&hide_border=true`}
                 alt="Activity Graph" 
-                className="w-full max-w-[800px] rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-200 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
                 width={800}
                 height={200}
                 style={{ height: 'auto' }}

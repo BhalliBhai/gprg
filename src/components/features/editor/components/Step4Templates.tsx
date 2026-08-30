@@ -15,7 +15,7 @@ const ReadmePreview = ({ state }: { state: EditorState }) => {
   const markdown = generateMarkdown(state);
 
   return (
-    <div className="font-sans text-slate-100 bg-[#0d1117] p-8 rounded-b-2xl min-h-150 border border-slate-800" data-color-mode="dark">
+    <div className="font-sans text-slate-100 bg-background-dark p-8 rounded-b-2xl min-h-150 border border-slate-800" data-color-mode="dark">
       <MDEditor.Markdown 
         source={markdown} 
         style={{ backgroundColor: 'transparent', color: 'inherit' }}
@@ -59,7 +59,7 @@ export function Step4Templates({ state, setState, nextStep, prevStep }: StepProp
       <div className="w-full relative shadow-[0_0_15px_rgba(17,212,82,0.2)] border-2 border-primary/30 rounded-2xl overflow-hidden bg-slate-900">
         
         {/* Mac OS Style Header */}
-        <div className="bg-[#161b22] px-6 py-3 flex items-center justify-between border-b border-slate-800">
+        <div className="bg-surface-dark px-6 py-3 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
               <div className="h-3 w-3 rounded-full bg-red-500/80"></div>

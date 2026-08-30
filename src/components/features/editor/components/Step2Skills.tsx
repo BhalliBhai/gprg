@@ -99,7 +99,7 @@ export function Step2Skills({ state, setState, nextStep, prevStep }: StepProps) 
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 min-h-[300px] content-start">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 min-h-75 content-start">
         {filteredSkills.map((skill) => {
           const isSelected = state.skills.includes(skill.id);
           return (
