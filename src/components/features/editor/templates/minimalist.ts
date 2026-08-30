@@ -20,7 +20,7 @@ export const minimalistTemplate: TemplateDefinition = {
     const widgets = [a.showStats && statsWidget(githubUser, a.theme), a.showLanguages && langsWidget(githubUser, a.theme), a.showStreak && streakWidget(githubUser, a.theme)].filter(Boolean) as string[];
     if (widgets.length) md += `## 📊 GitHub Analytics\n\n<p align="left">\n${widgets.map((w) => `  ${w}`).join('\n')}\n</p>\n\n`;
     if (a.showGraph) md += `<p align="left">\n  ${graphWidget(githubUser)}\n</p>\n\n`;
-    md += `---\nBuilt with [GPRM](${siteConfig.url})`;
+    md += `---\nBuilt with [GPRG](${siteConfig.url})`;
     return md.trim();
   },
 };

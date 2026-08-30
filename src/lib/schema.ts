@@ -4,7 +4,7 @@
 // reused - pull them from a single SITE constant instead of re-typing numbers.
 
 export const SITE = {
-  name: "GPRM",
+  name: "GPRG",
   url: "https://gprg.bhalli.dev",
   logo: "https://gprg.bhalli.dev/icon.svg",
   description:
@@ -51,7 +51,7 @@ export function softwareApplicationSchema(aggregateRating?: {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "GPRM - GitHub Profile README Generator",
+    name: "GPRG - GitHub Profile README Generator",
     url: SITE.url,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Any (Web-based)",

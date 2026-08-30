@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'AI GitHub Bio Generator: Write a Better Profile Bio in Seconds',
-  description: 'GPRM\'s AI Bio Generator writes a tailored GitHub profile bio in about 1-2 seconds. See how it works, why it beats manual writing, and how to use it free.',
-  publishDate: '2026-08-06',
+  description: 'GPRG\'s AI Bio Generator writes a tailored GitHub profile bio in about 1-2 seconds. See how it works, why it beats manual writing, and how to use it free.',
+  publishDate: '2026-08-21',
   coverImage: '/images/blogs/ai-github-bio-generator/cover.png',
   keywords: [
     'mvp builder',
@@ -48,7 +48,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'AI GitHub Bio Generator: Write a Better Profile Bio in Seconds',
-    description: 'GPRM\'s AI Bio Generator writes a tailored GitHub profile bio in about 1-2 seconds. See how it works, why it beats manual writing, and how to use it free.',
+    description: 'GPRG\'s AI Bio Generator writes a tailored GitHub profile bio in about 1-2 seconds. See how it works, why it beats manual writing, and how to use it free.',
     type: 'article',
     url: 'https://gprg.bhalli.dev/blogs/ai-github-bio-generator',
     images: [
@@ -65,7 +65,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AI GitHub Bio Generator: Write a Better Profile Bio in Seconds',
-    description: 'GPRM\'s AI Bio Generator writes a tailored GitHub profile bio in about 1-2 seconds. See how it works, why it beats manual writing, and how to use it free.',
+    description: 'GPRG\'s AI Bio Generator writes a tailored GitHub profile bio in about 1-2 seconds. See how it works, why it beats manual writing, and how to use it free.',
     images: ['https://gprg.bhalli.dev/images/blogs/ai-github-bio-generator/cover.png'],
   }
 };
@@ -74,7 +74,7 @@ export const metadata = {
 
 ![AI-generated text populating a GitHub profile bio card](/images/blogs/ai-github-bio-generator/cover.png)
 
-If your GitHub profile bio still says "Just a developer" or nothing at all, you're leaving the first three seconds of every recruiter, collaborator, and client visit completely blank — and that gap is exactly what GPRM's AI Bio Generator was built to close, turning a form you fill out in under a minute into a tailored, tone-matched bio generated in roughly 1-2 seconds by Google's Gemini model. By the end of this post you'll know exactly how the feature works under the hood, why a generated bio consistently outperforms a copy-pasted template, and how to generate your own for free at [gprm.bhalli.dev](https://gprm.bhalli.dev).
+If your GitHub profile bio still says "Just a developer" or nothing at all, you're leaving the first three seconds of every recruiter, collaborator, and client visit completely blank — and that gap is exactly what GPRG's AI Bio Generator was built to close, turning a form you fill out in under a minute into a tailored, tone-matched bio generated in roughly 1-2 seconds by Google's Gemini model. By the end of this post you'll know exactly how the feature works under the hood, why a generated bio consistently outperforms a copy-pasted template, and how to generate your own for free at [gprg.bhalli.dev](https://gprg.bhalli.dev).
 
 ---
 
@@ -128,11 +128,11 @@ A Full Stack Developer who turns caffeine into code ☕
 
 ---
 
-## 2. What Makes GPRM's AI Bio Generator Different From Every Other README Tool?
+## 2. What Makes GPRG's AI Bio Generator Different From Every Other README Tool?
 
-GPRM is the first GitHub profile README generator to ship a built-in AI bio writer rather than a static template library, which matters because every competing tool — including gprm.itsvg.in and the dozen forks that followed the original README-generator pattern — still asks you to either write your own "About Me" copy or pick from a fixed list of pre-written lines that thousands of other profiles are also using.
+GPRG is the first GitHub profile README generator to ship a built-in AI bio writer rather than a static template library, which matters because every competing toolS — Followed the original README-generator pattern — still asks you to either write your own "About Me" copy or pick from a fixed list of pre-written lines that thousands of other profiles are also using.
 
-The AI Bio Generator sits inside the same `/generator` flow as the rest of GPRM's tools (skill icons, GitHub stats cards, contribution streaks), so you're not bouncing to a separate app. You pick a tone — Professional, Witty, Casual, or Minimal — fill in a short form (role, current focus, tech stack, one or two personal details), and the model generates 3-5 lines of bio copy formatted as ready-to-use markdown, including the emoji conventions that dominate high-engagement GitHub profiles.
+The AI Bio Generator sits inside the same `/generator` flow as the rest of GPRG's tools (skill icons, GitHub stats cards, contribution streaks), so you're not bouncing to a separate app. You pick a tone — Professional, Witty, Casual, or Minimal — fill in a short form (role, current focus, tech stack, one or two personal details), and the model generates 3-5 lines of bio copy formatted as ready-to-use markdown, including the emoji conventions that dominate high-engagement GitHub profiles.
 
 As a Certified Project Manager, I built the tone options as a fixed enum rather than a free-text "describe your desired tone" field on purpose — open-ended tone instructions produce inconsistent output length and formatting across users, while a constrained set of four tones keeps generation time and output structure predictable, which matters when you're optimizing for a sub-2-second response.
 
@@ -140,7 +140,7 @@ As a Certified Project Manager, I built the tone options as a fixed enum rather 
 
 ## 3. How Does the AI Bio Generator Actually Work Under the Hood?
 
-The generator is a straightforward prompt-engineering pipeline on top of Google's Generative AI SDK, not a fine-tuned model — the quality comes from a carefully constrained prompt template, not model training. GPRM's stack is Next.js (App Router) end to end, so the bio generator lives as a server-side API route that the client-side editor calls directly.
+The generator is a straightforward prompt-engineering pipeline on top of Google's Generative AI SDK, not a fine-tuned model — the quality comes from a carefully constrained prompt template, not model training. GPRG's stack is Next.js (App Router) end to end, so the bio generator lives as a server-side API route that the client-side editor calls directly.
 
 ```typescript
 // app/api/generate-bio/route.ts
@@ -250,7 +250,7 @@ The time saved isn't just the writing itself — it's the elimination of the rev
 </div>
 
 <div className="flex flex-col items-center justify-center my-6 p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-md shadow-lg max-w-4xl mx-auto text-center font-sans">
-  <div className="text-xs uppercase tracking-wider text-emerald-500 mb-3 font-semibold">GPRM AI Bio Generator</div>
+  <div className="text-xs uppercase tracking-wider text-emerald-500 mb-3 font-semibold">GPRG AI Bio Generator</div>
   <div className="text-xl font-bold text-emerald-400 font-mono">T = 1.2s + (1 × 20s) = ~21s</div>
   <div className="text-xs text-emerald-400/80 mt-2 font-light">Most users make one tone swap or word tweak, not a full rewrite — because the starting point is already structured and specific instead of blank.</div>
 </div>
@@ -283,7 +283,7 @@ The time saved isn't just the writing itself — it's the elimination of the rev
         <td className="p-4 text-sm text-red-500 font-semibold">High — thousands of identical profiles</td>
       </tr>
       <tr className="hover:bg-white/5 transition-colors">
-        <td className="p-4 text-sm text-gray-600 dark:text-gray-400">GPRM AI Bio Generator</td>
+        <td className="p-4 text-sm text-gray-600 dark:text-gray-400">GPRG AI Bio Generator</td>
         <td className="p-4 text-sm text-emerald-500 font-semibold">~20-30 sec</td>
         <td className="p-4 text-sm text-emerald-500 font-semibold">High — built from your real input</td>
         <td className="p-4 text-sm text-gray-600 dark:text-gray-400">Low — generated per-input, not reused copy</td>
@@ -292,7 +292,7 @@ The time saved isn't just the writing itself — it's the elimination of the rev
   </table>
 </div>
 
-If you want the rest of the profile to match — stats cards, streaks, and skill icons around that bio — the [complete walkthrough for building a GitHub profile README in 2026](https://gprm.bhalli.dev/blog/how-to-create-github-profile-readme-2026) covers the full generator flow, and [this comparison of GPRM against writing markdown by hand](https://gprm.bhalli.dev/blog/gprm-vs-manual-markdown-readme-generator) breaks down where a generator earns its place versus raw markdown.
+If you want the rest of the profile to match — stats cards, streaks, and skill icons around that bio — the [complete walkthrough for building a GitHub profile README in 2026](/blog/how-to-create-github-profile-readme-2026) covers the full generator flow, and [this comparison of GPRG against writing markdown by hand](https://gprg.bhalli.dev/blog/gprg-vs-manual-markdown-readme-generator) breaks down where a generator earns its place versus raw markdown.
 
 ---
 
@@ -300,4 +300,4 @@ If you want the rest of the profile to match — stats cards, streaks, and skill
 
 An AI-generated bio isn't about outsourcing your voice to a model — it's about removing the blank-page tax that keeps thousands of otherwise-strong GitHub profiles sitting on a placeholder sentence, and doing it in the ~20-30 seconds a busy developer actually has for this task instead of the 15-20 minutes it demands when written from scratch. Pick a tone, fill in four fields, and you get a structured, specific starting point you can still edit — which is a meaningfully different starting line than an empty text box.
 
-**Stop leaving your profile's first three seconds blank:** GPRM is a free, open-source (MIT-licensed) GitHub README generator built on Next.js, and its AI Bio Generator is the only one in the category powered by Google's Gemini model directly inside the editor. [Contact me today to book a 30-minute developer-branding audit.](https://bhalli.dev/booking)
+**Stop leaving your profile's first three seconds blank:** GPRG is a free, open-source (MIT-licensed) GitHub README generator built on Next.js, and its AI Bio Generator is the only one in the category powered by Google's Gemini model directly inside the editor. [Contact me today to book a 30-minute developer-branding audit.](https://bhalli.dev/booking)

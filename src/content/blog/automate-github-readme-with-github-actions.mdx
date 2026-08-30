@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Automating Your GitHub Profile README With GitHub Actions",
   description: "How to make your GitHub profile README update itself — blog posts, latest activity, and dynamic stats — using GitHub Actions, and when automation is worth the setup.",
-  publishDate: "2026-08-08",
+  publishDate: "2026-08-22",
   slug: "automate-github-readme-with-github-actions",
   coverImage: "/images/blogs/automate-github-readme-with-github-actions/cover.png",
   keywords: [
@@ -65,7 +65,7 @@ It's worth separating two things that both get called "dynamic" but work complet
 
 **GitHub Actions automation** is different: it's a scheduled workflow that actually edits and commits changes to your README.md file itself, at a set interval (say, once a day), using data pulled from an API at that moment. This is how profiles that show "Latest Blog Posts," "Recently Played on Spotify," or "Currently Reading" sections work — because that content can't be rendered live as an image; it has to be written into the file directly, then committed back to your repository.
 
-Understanding this distinction matters because it tells you which automation approach to reach for. If you want a stats card, you don't need a GitHub Action — you need a widget URL, which is what tools like GPRM already generate for you. If you want your latest blog posts or tweets to appear as an actual list of links in your README, that requires a scheduled workflow that writes to the file.
+Understanding this distinction matters because it tells you which automation approach to reach for. If you want a stats card, you don't need a GitHub Action — you need a widget URL, which is what tools like GPRG already generate for you. If you want your latest blog posts or tweets to appear as an actual list of links in your README, that requires a scheduled workflow that writes to the file.
 
 ## How a GitHub Actions Workflow for This Actually Runs
 
@@ -118,7 +118,7 @@ Once a workflow is running on a schedule, it's easy to forget about it entirely 
 
 ## Combining Automation With a Generator-Built Layout
 
-Automation and a visual generator like GPRM aren't competing approaches — they solve different problems. GPRM handles the parts of your README that are structural and mostly static: your bio, categorized tech stack, live stats widgets, and overall template layout. GitHub Actions automation handles the narrower slice of content that needs to be periodically rewritten into the file itself, like a blog post list.
+Automation and a visual generator like GPRG aren't competing approaches — they solve different problems. GPRG handles the parts of your README that are structural and mostly static: your bio, categorized tech stack, live stats widgets, and overall template layout. GitHub Actions automation handles the narrower slice of content that needs to be periodically rewritten into the file itself, like a blog post list.
 
 A practical workflow for most developers: build your full layout in a generator first, export the Markdown, then manually add your placeholder comment markers into a dedicated section of the exported file before setting up the Actions workflow. This way, automation only touches the specific section it's meant to, and doesn't interfere with the rest of your carefully designed layout.
 
@@ -148,8 +148,8 @@ The README simply keeps showing whatever content was last successfully committed
 Yes, but each additional automated section adds maintenance overhead and a chance for conflicts if multiple workflows edit the same file on overlapping schedules. Start with one automation, confirm it's stable, and only add more once you're comfortable maintaining what you already have.
 
 **Is GitHub Actions automation necessary for a good profile README?**
-No — it's an enhancement, not a requirement. A well-structured, manually maintained README with a categorized tech stack, a solid bio, and live stats widgets (the kind you can build directly in [GPRM's generator](https://gprm.bhalli.dev/generator)) is a complete, credible profile on its own. Automation is worth adding once you have that foundation in place and a specific, recurring content type you want to keep fresh without manual edits.
+No — it's an enhancement, not a requirement. A well-structured, manually maintained README with a categorized tech stack, a solid bio, and live stats widgets (the kind you can build directly in [GPRG's generator](/generator)) is a complete, credible profile on its own. Automation is worth adding once you have that foundation in place and a specific, recurring content type you want to keep fresh without manual edits.
 
 ## Start With the Foundation
 
-Before layering in any automation, make sure the static structure of your profile is solid. Build your bio, tech stack, and stats layout in [GPRM's generator](https://gprm.bhalli.dev/generator) first — automation is most useful as an addition to a well-designed README, not a substitute for one.
+Before layering in any automation, make sure the static structure of your profile is solid. Build your bio, tech stack, and stats layout in [GPRG's generator](/generator) first — automation is most useful as an addition to a well-designed README, not a substitute for one.

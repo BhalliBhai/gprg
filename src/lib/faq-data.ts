@@ -8,34 +8,34 @@ import type { FaqItem } from "./schema";
 
 export const homeFaqs: FaqItem[] = [
   {
-    question: "What does GPRM stand for?",
+    question: "What does GPRG stand for?",
     answer:
-      "GPRM stands for GitHub Profile README Generator - a free, no-code tool to build professional GitHub profile READMEs.",
+      "GPRG stands for GitHub Profile README Generator - a free, no-code tool to build professional GitHub profile READMEs.",
   },
   {
-    question: "Is GPRM open source?",
+    question: "Is GPRG open source?",
     answer:
-      "Yes. GPRM is hosted on GitHub and is open to issue reports and pull requests from the community.",
+      "Yes. GPRG is hosted on GitHub and is open to issue reports and pull requests from the community.",
   },
   {
-    question: "Does GPRM require me to sign up or log in?",
+    question: "Does GPRG require me to sign up or log in?",
     answer:
       "No - you can generate and download a README without creating an account. Linking your GitHub account is only needed for advanced integrations like live stats cards.",
   },
   {
-    question: "How long does it take to make a README with GPRM?",
+    question: "How long does it take to make a README with GPRG?",
     answer:
       "Most developers can generate a complete, styled README in under a minute using a template and the AI bio writer.",
   },
   {
-    question: "Can I use GPRM for a company or team GitHub org profile?",
+    question: "Can I use GPRG for a company or team GitHub org profile?",
     answer:
       "Yes - a generated README works for an organization profile as long as it follows GitHub's repo naming and visibility rules for org profile READMEs.",
   },
   {
-    question: "Does GPRM work if I don't have any GitHub repos yet?",
+    question: "Does GPRG work if I don't have any GitHub repos yet?",
     answer:
-      "Yes. GPRM only needs your GitHub username and the details you enter - it doesn't require existing repositories, though stats cards will show more once you do.",
+      "Yes. GPRG only needs your GitHub username and the details you enter - it doesn't require existing repositories, though stats cards will show more once you do.",
   },
 ];
 
@@ -68,10 +68,10 @@ export const guideFaqs: FaqItem[] = [
   {
     question: "How do I add GitHub stats and streak badges to my README?",
     answer:
-      "Use GPRM's stats card tool to generate an image or Markdown snippet for your stats, then paste it into your README - make sure the image URL stays publicly accessible so GitHub can render it.",
+      "Use GPRG's stats card tool to generate an image or Markdown snippet for your stats, then paste it into your README - make sure the image URL stays publicly accessible so GitHub can render it.",
   },
   {
-    question: "Can I use GPRM without a GitHub account?",
+    question: "Can I use GPRG without a GitHub account?",
     answer:
       "You can build and preview a README without signing in, but you'll need a GitHub account to actually publish it to your profile repository.",
   },
@@ -109,9 +109,9 @@ export const templatesFaqs: FaqItem[] = [
       "Yes - you can select a different template in the generator at any time and regenerate your README without losing your entered details.",
   },
   {
-    question: "Are GPRM templates free to use commercially?",
+    question: "Are GPRG templates free to use commercially?",
     answer:
-      "Yes, all 7 GPRM templates are free to use, including for freelance or client-facing profiles.",
+      "Yes, all 7 GPRG templates are free to use, including for freelance or client-facing profiles.",
   },
   {
     question: "Which template works best if I don't have much GitHub activity yet?",
@@ -127,29 +127,29 @@ export const templatesFaqs: FaqItem[] = [
 
 export const faqHubFaqs: FaqItem[] = [
   {
-    question: "What is GPRM?",
+    question: "What is GPRG?",
     answer:
-      "GPRM is a free GitHub Profile README Generator that helps developers build professional profile READMEs using templates, an AI bio writer, and dynamic stats cards.",
+      "GPRG is a free GitHub Profile README Generator that helps developers build professional profile READMEs using templates, an AI bio writer, and dynamic stats cards.",
   },
   {
-    question: "Is GPRM really free?",
+    question: "Is GPRG really free?",
     answer:
       "Yes - the generator and its templates are free to use, with no signup or credit card required.",
   },
   {
-    question: "Does GPRM store or sell my GitHub data?",
+    question: "Does GPRG store or sell my GitHub data?",
     answer:
-      "GPRM does not sell personal GitHub data. See the Privacy Policy page for full details on what is stored and for how long.",
+      "GPRG does not sell personal GitHub data. See the Privacy Policy page for full details on what is stored and for how long.",
   },
   {
-    question: "How is GPRM different from other GitHub README generators?",
+    question: "How is GPRG different from other GitHub README generators?",
     answer:
-      "GPRM's main differentiators are its AI-powered bio writer, a library of 200+ tech icons, and premium templates - features not all competing generators offer together in one free tool.",
+      "GPRG's main differentiators are its AI-powered bio writer, a library of 200+ tech icons, and premium templates - features not all competing generators offer together in one free tool.",
   },
   {
-    question: "Do I need to know Markdown to use GPRM?",
+    question: "Do I need to know Markdown to use GPRG?",
     answer:
-      "No - GPRM's visual editor handles the Markdown for you, though basic Markdown knowledge helps if you want to fine-tune the output afterward.",
+      "No - GPRG's visual editor handles the Markdown for you, though basic Markdown knowledge helps if you want to fine-tune the output afterward.",
   },
   {
     question: "How does the AI bio generator work?",
@@ -157,7 +157,7 @@ export const faqHubFaqs: FaqItem[] = [
       "You provide a few details about yourself and pick a tone, and the AI bio generator writes a short, ready-to-use bio in seconds using that input.",
   },
   {
-    question: "Can I use GPRM's stats badges outside of a GitHub README?",
+    question: "Can I use GPRG's stats badges outside of a GitHub README?",
     answer:
       "Yes - the generated stats card images are standard image URLs, so they can be embedded anywhere Markdown or HTML images are supported, not just GitHub.",
   },
@@ -174,6 +174,6 @@ export const faqHubFaqs: FaqItem[] = [
   {
     question: "How do I report a bug or request a new template or icon?",
     answer:
-      "Open an issue on GPRM's GitHub repository with steps to reproduce the bug or a description of the template or icon you'd like added.",
+      "Open an issue on GPRG's GitHub repository with steps to reproduce the bug or a description of the template or icon you'd like added.",
   },
 ];

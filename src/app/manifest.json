@@ -1,6 +1,6 @@
 {
-  "name": "GPRM - Github Profile Readme Maker",
-  "short_name": "GPRM",
+  "name": "GPRG - Github Profile Readme Maker",
+  "short_name": "GPRG",
   "icons": [
     {
       "src": "/favicon/web-app-manifest-192x192.png",

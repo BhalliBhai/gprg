@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
 import Script from "next/script";
+import { Providers } from "@/components/layout/providers";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -206,14 +207,16 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${spaceGrotesk.variable} antialiased bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark selection:bg-primary selection:text-white font-sans`}
       >
-        <div className="relative min-h-screen w-full flex flex-col overflow-x-clip grid-pattern">
-          <Header />
-          <main className="flex-1">
-            {children}
-            <Analytics />
-          </main>
-          <Footer />
-        </div>
+        <Providers>
+          <div className="relative min-h-screen w-full flex flex-col overflow-x-clip grid-pattern">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </Providers>
+        <Analytics />
         <GoogleAnalytics gaId={"G-PVRCXDQL3P"} />
         <Script
           id="adsense-init"

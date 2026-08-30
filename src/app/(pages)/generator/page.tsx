@@ -14,7 +14,7 @@ import { EditorIntro } from '@/components/sections/editor/EditorIntro';
 export default function GeneratorPage() {
   const [currentStep, setCurrentStep] = useState<number>(() => {
     if (typeof window === 'undefined') return 1;
-    const savedStep = window.sessionStorage.getItem('gprg-step') || window.sessionStorage.getItem('gprm-step');
+    const savedStep = window.sessionStorage.getItem('gprg-step')
     if (!savedStep) return 1;
     const parsed = Number.parseInt(savedStep, 10);
     if (!Number.isFinite(parsed)) return 1;
@@ -22,7 +22,7 @@ export default function GeneratorPage() {
   });
   const [editorState, setEditorState] = useState<EditorState>(() => {
     if (typeof window === 'undefined') return INITIAL_STATE;
-    const savedState = window.sessionStorage.getItem('gprg-state') || window.sessionStorage.getItem('gprm-state');
+    const savedState = window.sessionStorage.getItem('gprg-state')
     if (!savedState) return INITIAL_STATE;
     try {
       return JSON.parse(savedState);

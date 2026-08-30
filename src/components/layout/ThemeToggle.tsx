@@ -1,32 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon } from "../Icons";
 
-export function ThemeToggle({ className = "" }: { className?: string }) {
-  const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+function subscribe() {
+  // No external events to subscribe to — mount status never changes after
+  // the initial client render, so this is a no-op unsubscribe.
+  return () => {};
+}
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-    const stored = localStorage.getItem("theme");
-    if (stored) {
-      const dark = stored === "dark";
-      setIsDark(dark);
-      document.documentElement.classList.toggle("dark", dark);
-    } else {
-      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setIsDark(systemDark);
-      document.documentElement.classList.toggle("dark", systemDark);
-    }
-  }, []);
+function useMounted() {
+  return useSyncExternalStore(
+    subscribe,
+    () => true,   // client snapshot
+    () => false   // server snapshot
+  );
+}
+
+export function ThemeToggle({ className = "" }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme();
+  const mounted = useMounted();
+
+  const isDark = resolvedTheme === "dark";
 
   const toggleTheme = () => {
-    const nextDark = !isDark;
-    setIsDark(nextDark);
-    document.documentElement.classList.toggle("dark", nextDark);
-    localStorage.setItem("theme", nextDark ? "dark" : "light");
+    setTheme(isDark ? "light" : "dark");
   };
 
   return (
@@ -40,9 +39,15 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       {!mounted ? (
         <span className="w-5 h-5 opacity-0" aria-hidden="true" />
       ) : isDark ? (
-        <SunIcon size={18} className="text-amber-400 hover:text-amber-300 transition-transform duration-200 rotate-0 hover:rotate-12" />
+        <SunIcon
+          size={18}
+          className="text-amber-400 hover:text-amber-300 transition-transform duration-200 rotate-0 hover:rotate-12"
+        />
       ) : (
-        <MoonIcon size={18} className="text-slate-700 hover:text-slate-900 transition-transform duration-200 -rotate-12 hover:rotate-0" />
+        <MoonIcon
+          size={18}
+          className="text-slate-700 hover:text-slate-900 transition-transform duration-200 -rotate-12 hover:rotate-0"
+        />
       )}
     </button>
   );

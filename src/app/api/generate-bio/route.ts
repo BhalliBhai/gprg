@@ -95,7 +95,7 @@ Instructions:
     return NextResponse.json({ bio: text, remaining });
   } catch (error: unknown) {
     // Log detailed error for developer debugging only (server-side console)
-    console.error('[GPRM AI] Generation error (internal):', error);
+    console.error('[GPRG AI] Generation error (internal):', error);
 
     const errorMessage = error instanceof Error ? error.message : String(error);
 
