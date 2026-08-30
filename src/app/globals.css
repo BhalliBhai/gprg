@@ -1,26 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   THEME TOKENS — GPRG System (GitHub Dark Modern Inspired)
+   This block defines your color tokens and typography for Tailwind v4.
+   ========================================================================== */
+@theme {
+  --color-primary: #238636;
+  --color-primary-hover: #2EA043;
+  --color-accent-blue: #58A6FF;
+  --color-accent-purple: #8B5CF6;
+
+  /* Background Canvas */
+  --color-background-light: #F6F8FA;
+  --color-background-dark: #0D1117;
+
+  /* Surface / Container Cards */
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #161B22;
+  --color-surface-hover-light: #F3F4F6;
+  --color-surface-hover-dark: #1F242C;
+
+  /* Borders & Dividers */
+  --color-border-light: #D0D7DE;
+  --color-border-dark: #30363D;
+
+  /* Typography */
+  --color-text-light: #1F2328;
+  --color-text-dark: #F0F6FC;
+  --color-text-muted-light: #656D76;
+  --color-text-muted-dark: #8B949E;
+
+  /* Fonts */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Border Radii */
+  --radius-DEFAULT: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   DARK MODE VARIANT
+   ========================================================================== */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: var(--color-background-light);
+  color: var(--color-text-light);
+}
+
+.dark body {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-dark);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+/* --- Effects -------------------------------------------------------------- */
+@utility hairline-border {
+  border: 1px solid var(--color-border-dark);
+}
+
+@utility hairline-border-light {
+  border: 1px solid var(--color-border-light);
+}
+
+@utility grid-pattern {
+  background-image: radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--color-accent-blue) 12%, transparent) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+@utility green-glint {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+/* --- Layout ----------------------------------------------------------- */
+@utility container-app {
+  @apply mx-auto w-full max-w-6xl px-6;
+}
+
+@utility section {
+  @apply py-16 md:py-24;
+}
+
+/* --- Headings ---------------------------------------------------------- */
+@utility heading-xl {
+  @apply font-sans font-bold tracking-tight leading-[1.1] text-4xl md:text-5xl text-text-light dark:text-text-dark;
+}
+
+@utility heading-lg {
+  @apply font-sans font-semibold tracking-tight leading-tight text-3xl md:text-4xl text-text-light dark:text-text-dark;
+}
+
+@utility heading-md {
+  @apply font-sans font-semibold tracking-tight leading-snug text-xl md:text-2xl text-text-light dark:text-text-dark;
+}
+
+@utility heading-sm {
+  @apply font-sans font-medium leading-snug text-lg md:text-xl text-text-light dark:text-text-dark;
+}
+
+@utility subheading {
+  @apply font-sans font-normal leading-relaxed text-base md:text-lg text-text-muted-light dark:text-text-muted-dark;
+}
+
+/* --- Body text ---------------------------------------------------------- */
+@utility text-body {
+  @apply font-sans text-base leading-relaxed text-text-light dark:text-text-dark;
+}
+
+@utility text-body-sm {
+  @apply font-sans text-sm leading-relaxed text-text-light dark:text-text-dark;
+}
+
+@utility text-muted {
+  @apply font-sans text-sm text-text-muted-light dark:text-text-muted-dark;
+}
+
+@utility text-caption {
+  @apply font-sans text-xs font-semibold uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark;
+}
+
+@utility text-code {
+  @apply font-mono text-sm text-text-light dark:text-text-dark;
+}
+
+/* --- Buttons ---------------------------------------------------------- */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+         transition-all duration-150 ease-in-out
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+@utility btn-primary {
+  @apply btn bg-primary text-white hover:bg-primary-hover active:scale-[0.98] green-glint;
+}
+
+@utility btn-secondary {
+  @apply btn bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark
+         hairline-border-light dark:hairline-border
+         hover:bg-surface-hover-light dark:hover:bg-surface-hover-dark;
+}
+
+@utility btn-ghost {
+  @apply btn bg-transparent text-accent-blue hover:bg-accent-blue/10;
+}
+
+@utility btn-accent {
+  @apply btn bg-accent-blue text-background-dark hover:opacity-90;
+}
+
+@utility btn-sm {
+  @apply px-3 py-1 text-xs;
+}
+
+@utility btn-lg {
+  @apply px-5 py-3 text-base;
+}
+
+/* --- Links --------------------------------------------------------------- */
+@utility link {
+  @apply text-accent-blue underline-offset-4 decoration-accent-blue/40 hover:underline transition-colors;
+}
+
+@utility link-subtle {
+  @apply text-text-muted-light dark:text-text-muted-dark
+         hover:text-text-light dark:hover:text-text-dark transition-colors;
+}
+
+@utility nav-link {
+  @apply text-sm font-medium text-text-muted-light dark:text-text-muted-dark
+         hover:text-text-light dark:hover:text-text-dark transition-colors;
+}
+
+/* --- Cards / surfaces ----------------------------------------------------- */
+@utility card {
+  @apply rounded-xl bg-surface-light dark:bg-surface-dark
+         hairline-border-light dark:hairline-border
+         p-6;
+}
+
+@utility card-elevated {
+  @apply card shadow-md;
+}
+
+@utility card-interactive {
+  @apply card cursor-pointer transition-all duration-200 hover:border-accent-blue/50;
+}
+
+/* --- Badges / pills ------------------------------------------------------- */
+@utility badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+         bg-accent-blue/15 text-accent-blue;
+}
+
+@utility badge-green {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+         bg-primary/15 text-primary;
+}
+
+@utility badge-purple {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+         bg-accent-purple/15 text-accent-purple;
+}
+
+@utility badge-neutral {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+         bg-border-light/50 dark:bg-border-dark/50 text-text-muted-light dark:text-text-muted-dark;
+}
+
+/* --- Forms ----------------------------------------------------------------- */
+@utility input {
+  @apply w-full rounded-lg bg-white dark:bg-background-dark
+         hairline-border-light dark:hairline-border
+         px-3.5 py-2 text-sm text-text-light dark:text-text-dark
+         placeholder:text-text-muted-light dark:placeholder:text-text-muted-dark
+         focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-accent-blue
+         transition-all duration-150;
+}
+
+@utility label {
+  @apply block text-sm font-medium text-text-light dark:text-text-dark mb-1.5;
+}
+
+@utility select {
+  @apply input appearance-none pr-10;
+}
+
+@utility textarea {
+  @apply input resize-none;
+}
+
+/* --- Misc ------------------------------------------------------------------ */
+@utility divider {
+  @apply h-px w-full bg-border-light dark:bg-border-dark;
+}
+
+@utility code-block {
+  @apply font-mono text-sm rounded-lg bg-background-light dark:bg-background-dark
+         hairline-border-light dark:hairline-border p-4 overflow-x-auto;
+}
+
+@utility avatar {
+  @apply rounded-full hairline-border-light dark:hairline-border object-cover;
+}
+
+@utility tooltip {
+  @apply rounded-md bg-text-light dark:bg-surface-hover-dark text-background-light dark:text-text-dark
+         text-xs px-2.5 py-1.5 shadow-lg hairline-border-light dark:hairline-border;
 }
