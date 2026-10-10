@@ -20,7 +20,9 @@ export const siteConfig = {
     { href: '/blog', label: 'Blog', icon: 'article' },
   ],
   links: {
-    browserTestingTool: 'https://github.com/BhalliBhai/Browser-Testing',
+    anyBrowserTool: 'https://github.com/BhalliBhai/any-browser-cli',
+    anyBrowserGithub: "https://github.com/BhalliBhai/any-browser-cli",
+    anyBrowserNpm: "https://www.npmjs.com/package/any-browser",
   },
 } as const;
 

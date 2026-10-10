@@ -70,23 +70,43 @@ export function Footer() {
               <PublicIcon size={14} className="text-primary" /> Open Source
             </h4>
             <nav className="flex flex-col gap-3">
-              <a
-                className="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors flex items-start gap-2 group"
-                href={siteConfig.links.browserTestingTool}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <DevicesIcon size={16} className="mt-0.5 group-hover:text-primary transition-colors shrink-0" />
+              <div className="flex items-start gap-2 group">
+                <DevicesIcon size={16} className="mt-0.5 text-text-muted-light dark:text-text-muted-dark group-hover:text-primary transition-colors shrink-0" />
                 <div className="flex flex-col">
-                  <span className="font-medium text-text-light dark:text-text-dark group-hover:text-primary transition-colors text-sm flex items-center gap-1">
-                    Browser Testing Tool
+                  <a
+                    className="font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors text-sm flex items-center gap-1"
+                    href={siteConfig.links.anyBrowserTool}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Any Browser CLI
                     <ArrowOutwardIcon size={12} className="opacity-60" />
-                  </span>
+                  </a>
                   <span className="text-xs mt-0.5 leading-relaxed text-text-muted-light dark:text-text-muted-dark">
-                    Test Safari, Opera, and Firefox on any OS via Node &amp; npm.
+                    Test website in Safari, Firefox, and Chrome on any OS (Linux, Windows) with a simple npm command.
                   </span>
+                  <div className="flex items-center gap-3 mt-1.5 text-xs">
+                    <a
+                      className="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors flex items-center gap-1"
+                      href={siteConfig.links.anyBrowserGithub}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub
+                      <ArrowOutwardIcon size={10} className="opacity-60" />
+                    </a>
+                    <a
+                      className="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors flex items-center gap-1"
+                      href={siteConfig.links.anyBrowserNpm}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      npm
+                      <ArrowOutwardIcon size={10} className="opacity-60" />
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </nav>
           </div>
         </div>
