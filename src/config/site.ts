@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'GPRG',
   fullName: 'GPRG - GitHub Profile README Generator',
-  title: 'GPRG - Free GitHub Profile README Generator/Maker | Create Professional READMEs',
+  title: 'GPRG - GitHub Profile README Generator',
   tagline: 'Level Up Your GitHub Profile',
   url: 'https://gprg.bhalli.dev',
   creatorUrl: 'https://bhalli.dev',
