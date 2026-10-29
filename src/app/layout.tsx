@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
 import Script from "next/script";
 import { Providers } from "@/components/layout/providers";
+import ClarityProvider from '@/components/ClarityProvider/ClarityProvider';
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -202,6 +203,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${spaceGrotesk.variable} antialiased bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark selection:bg-primary selection:text-white font-sans`}
       >
+        <ClarityProvider />
         <Providers>
           <div className="relative min-h-screen w-full flex flex-col overflow-x-clip grid-pattern">
             <Header />
