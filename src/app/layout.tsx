@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -213,7 +212,6 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
-        <Analytics />
         <GoogleAnalytics gaId={"G-PVRCXDQL3P"} />
         <Script
           id="adsense-init"
