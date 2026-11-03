@@ -39,3 +39,4 @@ npm run deploy
 ```
 
 `npm run preview` builds and runs the Worker locally in Wrangler. `npm run deploy` builds and deploys to Cloudflare while preserving configured dashboard variables. The Worker route is set in `wrangler.jsonc`; the canonical site origin is set in `src/config/site.ts`. Update both when deploying to a different domain. The production image optimizer requires the `IMAGES` binding declared in `wrangler.jsonc`; without it, OpenNext serves original images without transformations.
+...
