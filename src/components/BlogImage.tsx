@@ -1,9 +1,7 @@
-'use client';
-
 import Image, { type StaticImageData } from 'next/image';
-import { useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type BlogImageProps = Omit<ComponentPropsWithoutRef<typeof Image>, 'src'> & {
+type BlogImageProps = Omit<ComponentPropsWithoutRef<typeof Image>, 'src' | 'onLoad' | 'onError'> & {
   src?: string | StaticImageData | null;
   containerClassName?: string;
 };
@@ -13,18 +11,10 @@ export default function BlogImage({
   alt = '',
   className,
   containerClassName,
+  quality = 70,
   ...props
 }: BlogImageProps) {
-  const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setHasError(false);
-    setIsLoaded(false);
-  }, [src]);
-
-  if (!src || hasError) {
+  if (!src) {
     return null;
   }
 
@@ -46,17 +36,12 @@ export default function BlogImage({
         .filter(Boolean)
         .join(' ')}
     >
-      {!isLoaded ? (
-        <span className="absolute inset-0 animate-pulse bg-slate-200/70 dark:bg-slate-800/70" />
-      ) : null}
-
       <Image
+        {...props}
         src={src}
         alt={alt}
         className={imageClassName}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setHasError(true)}
-        {...props}
+        quality={quality}
       />
     </span>
   );

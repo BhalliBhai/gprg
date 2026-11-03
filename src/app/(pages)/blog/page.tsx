@@ -48,7 +48,7 @@ export default function BlogIndexPage() {
                     src={post.coverImage}
                     alt={post.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover transition duration-500 ease-out group-hover:scale-105"
                   />
                 ) : (

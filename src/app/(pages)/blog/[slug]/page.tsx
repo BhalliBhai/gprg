@@ -18,6 +18,8 @@ export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const post = getPostBySlug(resolvedParams.slug);
@@ -157,19 +159,20 @@ export default async function BlogPostPage({ params }: PageProps) {
           </p>
 
           {post.coverImage ? (
-            <div className="my-8 h-72 overflow-hidden rounded-2xl hairline-border-light dark:hairline-border sm:h-112">
+            <div className="relative my-8 aspect-video overflow-hidden rounded-2xl hairline-border-light dark:hairline-border">
               <BlogImage
                 src={post.coverImage}
                 alt={post.title}
-                width={1600}
-                height={400}
-                className="h-auto w-full object-cover"
+                fill
+                sizes="(max-width: 896px) 100vw, 896px"
+                preload
+                className="object-cover"
               />
             </div>
           ) : null}
 
           <div className="prose prose-slate mt-10 max-w-none dark:prose-invert">
-            <BlogPostContent slug={post.slug} />
+            <BlogPostContent post={post} />
           </div>
         </article>
       </section>

@@ -15,6 +15,7 @@ const MdxImage = ({ alt, src, className, width, height, ...props }: ComponentPro
         alt={alt ?? "Blog image"}
         width={parsedWidth}
         height={parsedHeight}
+        sizes="(max-width: 896px) 100vw, 896px"
         className="h-auto w-full object-cover"
         {...props}
       />

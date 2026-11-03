@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GPRG
+
+GPRG is a Next.js app with an MDX blog, deployed to Cloudflare Workers using OpenNext.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the development server:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Blog posts and local images are validated and indexed automatically before the dev server starts.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Blog content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Add an `.mdx` file under `src/content/blog/` that exports a `metadata` object containing a `title`, `description`, and ISO-formatted `publishDate`; `coverImage` is optional and must point to a file under `public/`. The build-time generator creates `src/generated-blog-posts.ts`, imports each post and its renderer into the Worker, and checks that local cover and Markdown images exist. Do not edit the generated file by hand.
 
-## Learn More
+Run `npm run dev`, `npm run build`, or `npm run cf:build` after adding posts; each command regenerates the manifest first. Posts are rendered on the server and included in the static route list and sitemap.
 
-To learn more about Next.js, take a look at the following resources:
+## Cloudflare deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The Wrangler configuration targets the `gprg.bhalli.dev` Worker route, serves static assets through the `ASSETS` binding, and enables Cloudflare's `IMAGES` binding for responsive AVIF/WebP image transformations. Authenticate Wrangler with the Cloudflare account that owns the `bhalli.dev` zone before previewing or deploying.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set the `GEMINI_API_KEY` Worker secret before deploying if AI bio generation should be enabled:
 
-## Deploy on Vercel
+```bash
+npx wrangler secret put GEMINI_API_KEY
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The app falls back to `gemini-2.5-flash`; configure `GEMINI_MODEL` as a Wrangler variable only if you need a different model.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm ci
+npm run cf:build
+npm run preview
+npm run deploy
+```
+
+`npm run preview` builds and runs the Worker locally in Wrangler. `npm run deploy` builds and deploys to Cloudflare while preserving configured dashboard variables. The Worker route is set in `wrangler.jsonc`; the canonical site origin is set in `src/config/site.ts`. Update both when deploying to a different domain. The production image optimizer requires the `IMAGES` binding declared in `wrangler.jsonc`; without it, OpenNext serves original images without transformations.
